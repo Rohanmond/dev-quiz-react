@@ -1,0 +1,29 @@
+.landing-main-image {
+  max-width: 22rem;
+}
+
+.landing-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.landing-main-container {
+  text-align: center;
+  width: 80%;
+  margin: 0 auto;
+  flex-direction: column;
+  gap: 1rem;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.landing-btns > * {
+  font-size: 2rem;
+}
+@media screen and (max-width: 500px) {
+  .landing-page-subheading {
+    font-size: 1.2rem;
+  }
+}

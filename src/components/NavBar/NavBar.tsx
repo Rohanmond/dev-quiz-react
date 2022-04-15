@@ -14,6 +14,29 @@ export const NavBar = () => {
           </NavLink>
         </div>
       </div>
+      <div className='nav-mid'>
+        <input
+          placeholder='search quiz'
+          //   value={input}
+          //   onChange={(e) => {
+          //     setInput(e.target.value);
+          //   }}
+          //   onKeyDown={(e) => {
+          //     if (e.key === 'Enter' || e.target.value === '' || e.keyCode === 8) {
+          //       dispatch({
+          //         type: ActionType.ChangeFilter,
+          //         payload: {
+          //           filterType: Filters.Search,
+          //           filterValue: e.target.value,
+          //         },
+          //       });
+          //       navigate('/products');
+          //     }
+          //   }}
+          className='nav-search brd-rd-semi-sq nav-text-input'
+          type='search'
+        />
+      </div>
       <div className='nav-right'>
         <ul className='nav-links'>
           <li className='nav-link-item'>

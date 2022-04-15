@@ -1,15 +1,44 @@
 .nav-link-item .login-btn {
-  padding: 0.5rem 1rem;
-  color: white;
+  padding: 0.375rem 0.75rem;
+  color: var(--text-color);
   margin: 0 0.5rem;
 }
 .nav-link-item .login-btn:hover {
-  color: var(--white-color);
+  color: var(--text-color);
 }
 
 .quiz-hero-logo {
   max-width: 5rem;
+  padding-left: 0.25rem;
 }
 .landing-nav {
-  padding: 0.25rem;
+  padding: 0.25rem 0rem;
+}
+.nav-search {
+  min-width: 35rem;
+}
+.nav-text-input {
+  font-size: 1rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.75rem;
+  transition: 0.4s all ease;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  border: 2px solid var(--secondary-color);
+}
+@media screen and (max-width: 750px) {
+  .nav-search {
+    min-width: 20rem;
+    width: max-content;
+  }
+}
+@media screen and (max-width: 500px) {
+  .nav-link-item .login-btn {
+    padding: 0.25rem 0.375rem;
+    font-size: 0.8rem;
+    margin: 0 0.2rem;
+  }
+  .nav-search {
+    min-width: 10rem;
+  }
 }
