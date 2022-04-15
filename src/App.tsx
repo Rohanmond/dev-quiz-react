@@ -1,11 +1,11 @@
 import './App.css';
 import { NavBar } from './components';
-import { LandingPage } from './pages';
+import { LandingPage, Login, QuizCategoryPage, Signup } from './pages';
 
 function App() {
   return (
     <div className='App'>
-      <LandingPage />
+      <Signup />
     </div>
   );
 }

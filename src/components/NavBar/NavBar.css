@@ -13,6 +13,7 @@
 }
 .landing-nav {
   padding: 0.25rem 0rem;
+  width: 100%;
 }
 .nav-search {
   min-width: 35rem;
