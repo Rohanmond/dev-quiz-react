@@ -1,0 +1,15 @@
+.nav-link-item .login-btn {
+  padding: 0.5rem 1rem;
+  color: white;
+  margin: 0 0.5rem;
+}
+.nav-link-item .login-btn:hover {
+  color: var(--white-color);
+}
+
+.quiz-hero-logo {
+  max-width: 5rem;
+}
+.landing-nav {
+  padding: 0.25rem;
+}
