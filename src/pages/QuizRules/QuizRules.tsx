@@ -1,8 +1,9 @@
-import './QuizRulesPage.css';
-
-export const QuizRulesPage = () => {
+import { NavBar } from '../../components';
+import './QuizRules.css';
+export const QuizRules = () => {
   return (
     <div className='home-container'>
+      <NavBar />
       <div className='quiz-rules-header'>
         <h1>Quiz Rules</h1>
       </div>
