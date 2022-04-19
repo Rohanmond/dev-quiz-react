@@ -1,5 +1,17 @@
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useAuth } from '../../contexts/auth-context';
+
 import './Auth.css';
 export const Login = () => {
+  const { loginHandler } = useAuth();
+  const [loginForm, setLoginForm] = useState({
+    email: '',
+    password: '',
+  });
+  const onSubmitHandler = async (e: React.SyntheticEvent) => {
+    loginHandler(loginForm.email, loginForm.password);
+  };
   return (
     <div className='login-container'>
       <main className='login-main'>
@@ -14,16 +26,28 @@ export const Login = () => {
                 placeholder='abc@devquiz.com'
                 className='text-input'
                 type='text'
+                value={loginForm.email}
+                onChange={(e) =>
+                  setLoginForm({ ...loginForm, email: e.target.value })
+                }
               />
             </div>
           </div>
           <div className='login-card-item'>
             <div className='input-container'>
               <label>Password</label>
-              <input placeholder='' className='text-input' type='password' />
+              <input
+                placeholder=''
+                className='text-input'
+                type='password'
+                value={loginForm.password}
+                onChange={(e) =>
+                  setLoginForm({ ...loginForm, password: e.target.value })
+                }
+              />
             </div>
           </div>
-          <div className='login-card-item'>
+          {/* <div className='login-card-item'>
             <div className='input-container-hz'>
               <input
                 type='checkbox'
@@ -36,20 +60,26 @@ export const Login = () => {
             <a className='' href='#'>
               forgot your password?
             </a>
-          </div>
+          </div> */}
           <div className='login-card-item'>
-            <a
+            <button
+              onClick={onSubmitHandler}
               className='btn btn-link-primary background-primary text-align-center brd-rd-semi-sq'
-              href='../home/home.html'
             >
               Login
-            </a>
-            <a
+            </button>
+            <button
+              onClick={onSubmitHandler}
+              className='btn btn-link-primary background-primary text-align-center brd-rd-semi-sq'
+            >
+              Login with test credentials
+            </button>
+            <Link
               className='btn btn-link-secondary outlined-secondary text-align-center brd-rd-semi-sq'
-              href='../auth/signup.html'
+              to={'/signup'}
             >
               Create New Account
-            </a>
+            </Link>
           </div>
         </div>
       </main>
