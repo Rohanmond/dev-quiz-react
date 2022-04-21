@@ -1,21 +1,32 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/auth-context';
 
 import './Auth.css';
 export const Login = () => {
-  const { loginHandler } = useAuth();
+  const { loginHandler, token } = useAuth();
+  const navigate = useNavigate();
   const [loginForm, setLoginForm] = useState({
     email: '',
     password: '',
   });
+
+  useEffect(() => {
+    if (token) {
+      navigate('/');
+    }
+  });
+
   const onSubmitHandler = async (e: React.SyntheticEvent) => {
+    console.log('called', loginForm);
+    e.preventDefault();
     loginHandler(loginForm.email, loginForm.password);
   };
+
   return (
     <div className='login-container'>
       <main className='login-main'>
-        <div className='login-card brd-rd-semi-sq'>
+        <form onSubmit={onSubmitHandler} className='login-card brd-rd-semi-sq'>
           <div className='login-card-header'>
             <h3 className='text-align-center'>Login</h3>
           </div>
@@ -62,14 +73,16 @@ export const Login = () => {
             </a>
           </div> */}
           <div className='login-card-item'>
-            <button
-              onClick={onSubmitHandler}
-              className='btn btn-link-primary background-primary text-align-center brd-rd-semi-sq'
-            >
+            <button className='btn btn-link-primary background-primary text-align-center brd-rd-semi-sq'>
               Login
             </button>
             <button
-              onClick={onSubmitHandler}
+              onClick={() =>
+                setLoginForm({
+                  email: 'mondalrohan108@gmail.com',
+                  password: '123456',
+                })
+              }
               className='btn btn-link-primary background-primary text-align-center brd-rd-semi-sq'
             >
               Login with test credentials
@@ -81,7 +94,7 @@ export const Login = () => {
               Create New Account
             </Link>
           </div>
-        </div>
+        </form>
       </main>
     </div>
   );

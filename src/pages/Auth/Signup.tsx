@@ -1,14 +1,21 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/auth-context';
 import './Auth.css';
 
 export const Signup = () => {
-  const { signupHandler } = useAuth();
+  const { signupHandler, token } = useAuth();
+  const navigate = useNavigate();
   const [signupForm, setSignupForm] = useState({
     name: '',
     email: '',
     password: '',
+  });
+
+  useEffect(() => {
+    if (token) {
+      navigate('/');
+    }
   });
 
   const onSubmitHandler = async (e: React.SyntheticEvent) => {
@@ -69,19 +76,7 @@ export const Signup = () => {
               <input placeholder='' className='text-input' type='password' />
             </div>
           </div>
-          <div className='login-card-item'>
-            <div className='input-container-hz'>
-              <input
-                type='checkbox'
-                name='terms-conditions-checkbox'
-                value='accepted terms conditions'
-                id='terms-conditions-checkbox'
-              />
-              <label htmlFor='terms-conditions-checkbox'>
-                I accept all Terms &#38; Conditions
-              </label>
-            </div>
-          </div>
+
           <div className='login-card-item'>
             <button
               onClick={onSubmitHandler}
