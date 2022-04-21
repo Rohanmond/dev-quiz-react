@@ -1,6 +1,9 @@
+import { useNavigate } from 'react-router-dom';
 import { NavBar } from '../../components';
 import './LandingPage.css';
 export const LandingPage = () => {
+  const navigate = useNavigate();
+
   return (
     <div className='landing-container'>
       <NavBar />
@@ -16,12 +19,12 @@ export const LandingPage = () => {
           DevQuiz is having quizzes on programming concepts specially on
           front-end part
         </h3>
-        <a
-          href='./pages/home/home.html'
+        <button
+          onClick={() => navigate('/categories')}
           className='btn btn-link-primary background-primary brd-rd-semi-sq'
         >
           Let's start
-        </a>
+        </button>
       </main>
     </div>
   );

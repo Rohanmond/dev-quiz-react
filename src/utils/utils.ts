@@ -1,5 +1,5 @@
 import { toast } from 'react-toastify';
-import { ToastHandlerType } from '../types/types';
+import { ToastHandlerType } from '../types';
 
 export const toastHandler: ToastHandlerType = (type, message) => {
   if (type === 'error') {
