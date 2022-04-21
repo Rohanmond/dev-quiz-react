@@ -1,5 +1,7 @@
+import { Route, Routes } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import './App.css';
-import { NavBar } from './components';
+import 'react-toastify/dist/ReactToastify.css';
 import {
   LandingPage,
   Login,
@@ -13,7 +15,23 @@ import {
 function App() {
   return (
     <div className='App'>
-      <QuizResult />
+      <ToastContainer
+        position='bottom-right'
+        autoClose={false}
+        newestOnTop={false}
+        closeOnClick
+        theme='colored'
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+      />
+      <Routes>
+        <Route path='/' element={<LandingPage />} />
+        <Route path='/categories' element={<QuizCategoryPage />} />
+        <Route path='/questions' element={<QuizQuestions />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/signup' element={<Signup />} />
+      </Routes>
     </div>
   );
 }

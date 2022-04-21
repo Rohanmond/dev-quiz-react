@@ -1,6 +1,26 @@
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../contexts/auth-context';
 import './Auth.css';
 
 export const Signup = () => {
+  const { signupHandler, token } = useAuth();
+  const navigate = useNavigate();
+  const [signupForm, setSignupForm] = useState({
+    name: '',
+    email: '',
+    password: '',
+  });
+
+  useEffect(() => {
+    if (token) {
+      navigate('/');
+    }
+  });
+
+  const onSubmitHandler = async (e: React.SyntheticEvent) => {
+    signupHandler(signupForm.name, signupForm.email, signupForm.password);
+  };
   return (
     <div className='login-container'>
       <main className='login-main'>
@@ -15,6 +35,10 @@ export const Signup = () => {
                 placeholder='Mr. Developer'
                 className='text-input'
                 type='text'
+                value={signupForm.name}
+                onChange={(e) =>
+                  setSignupForm({ ...signupForm, name: e.target.value })
+                }
               />
             </div>
           </div>
@@ -25,13 +49,25 @@ export const Signup = () => {
                 placeholder='abc@devQuiz.com'
                 className='text-input'
                 type='email'
+                value={signupForm.email}
+                onChange={(e) =>
+                  setSignupForm({ ...signupForm, email: e.target.value })
+                }
               />
             </div>
           </div>
           <div className='login-card-item'>
             <div className='input-container'>
               <label>Password</label>
-              <input placeholder='' className='text-input' type='password' />
+              <input
+                placeholder=''
+                className='text-input'
+                type='password'
+                value={signupForm.password}
+                onChange={(e) =>
+                  setSignupForm({ ...signupForm, password: e.target.value })
+                }
+              />
             </div>
           </div>
           <div className='login-card-item'>
@@ -40,32 +76,20 @@ export const Signup = () => {
               <input placeholder='' className='text-input' type='password' />
             </div>
           </div>
+
           <div className='login-card-item'>
-            <div className='input-container-hz'>
-              <input
-                type='checkbox'
-                name='terms-conditions-checkbox'
-                value='accepted terms conditions'
-                id='terms-conditions-checkbox'
-              />
-              <label htmlFor='terms-conditions-checkbox'>
-                I accept all Terms &#38; Conditions
-              </label>
-            </div>
-          </div>
-          <div className='login-card-item'>
-            <a
+            <button
+              onClick={onSubmitHandler}
               className='btn btn-link-primary background-primary text-align-center brd-rd-semi-sq'
-              href='../home/home.html'
             >
               Create New Account
-            </a>
-            <a
+            </button>
+            <Link
               className='btn btn-link-secondary outlined-secondary text-align-center brd-rd-semi-sq'
-              href='../auth/login.html'
+              to={'/login'}
             >
               Already have an account
-            </a>
+            </Link>
           </div>
         </div>
       </main>

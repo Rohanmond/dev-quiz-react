@@ -1,6 +1,10 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../contexts/auth-context';
 import './NavBar.css';
 export const NavBar = () => {
+  const navigate = useNavigate();
+  const { token, logoutHandler } = useAuth();
+
   return (
     <nav className='navigation landing-nav'>
       <div className='nav-left'>
@@ -40,9 +44,22 @@ export const NavBar = () => {
       <div className='nav-right'>
         <ul className='nav-links'>
           <li className='nav-link-item'>
-            <button className='btn btn-link-primary background-primary brd-rd-semi-sq login-btn'>
-              Login
-            </button>
+            {!token && (
+              <button
+                onClick={() => navigate('/login')}
+                className='btn btn-link-primary background-primary brd-rd-semi-sq login-btn'
+              >
+                Login
+              </button>
+            )}
+            {token && (
+              <button
+                onClick={() => logoutHandler()}
+                className='btn btn-link-primary background-primary brd-rd-semi-sq login-btn'
+              >
+                Logout
+              </button>
+            )}
           </li>
         </ul>
       </div>

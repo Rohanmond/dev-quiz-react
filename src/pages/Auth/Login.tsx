@@ -1,9 +1,32 @@
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../contexts/auth-context';
+
 import './Auth.css';
 export const Login = () => {
+  const { loginHandler, token } = useAuth();
+  const navigate = useNavigate();
+  const [loginForm, setLoginForm] = useState({
+    email: '',
+    password: '',
+  });
+
+  useEffect(() => {
+    if (token) {
+      navigate('/');
+    }
+  });
+
+  const onSubmitHandler = async (e: React.SyntheticEvent) => {
+    console.log('called', loginForm);
+    e.preventDefault();
+    loginHandler(loginForm.email, loginForm.password);
+  };
+
   return (
     <div className='login-container'>
       <main className='login-main'>
-        <div className='login-card brd-rd-semi-sq'>
+        <form onSubmit={onSubmitHandler} className='login-card brd-rd-semi-sq'>
           <div className='login-card-header'>
             <h3 className='text-align-center'>Login</h3>
           </div>
@@ -14,16 +37,28 @@ export const Login = () => {
                 placeholder='abc@devquiz.com'
                 className='text-input'
                 type='text'
+                value={loginForm.email}
+                onChange={(e) =>
+                  setLoginForm({ ...loginForm, email: e.target.value })
+                }
               />
             </div>
           </div>
           <div className='login-card-item'>
             <div className='input-container'>
               <label>Password</label>
-              <input placeholder='' className='text-input' type='password' />
+              <input
+                placeholder=''
+                className='text-input'
+                type='password'
+                value={loginForm.password}
+                onChange={(e) =>
+                  setLoginForm({ ...loginForm, password: e.target.value })
+                }
+              />
             </div>
           </div>
-          <div className='login-card-item'>
+          {/* <div className='login-card-item'>
             <div className='input-container-hz'>
               <input
                 type='checkbox'
@@ -36,22 +71,30 @@ export const Login = () => {
             <a className='' href='#'>
               forgot your password?
             </a>
-          </div>
+          </div> */}
           <div className='login-card-item'>
-            <a
-              className='btn btn-link-primary background-primary text-align-center brd-rd-semi-sq'
-              href='../home/home.html'
-            >
+            <button className='btn btn-link-primary background-primary text-align-center brd-rd-semi-sq'>
               Login
-            </a>
-            <a
+            </button>
+            <button
+              onClick={() =>
+                setLoginForm({
+                  email: 'mondalrohan108@gmail.com',
+                  password: '123456',
+                })
+              }
+              className='btn btn-link-primary background-primary text-align-center brd-rd-semi-sq'
+            >
+              Login with test credentials
+            </button>
+            <Link
               className='btn btn-link-secondary outlined-secondary text-align-center brd-rd-semi-sq'
-              href='../auth/signup.html'
+              to={'/signup'}
             >
               Create New Account
-            </a>
+            </Link>
           </div>
-        </div>
+        </form>
       </main>
     </div>
   );
