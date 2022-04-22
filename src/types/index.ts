@@ -14,3 +14,5 @@ export {
 } from './data-context.types';
 
 export { ActionType } from './data-reducer.types';
+
+export { CategoryType } from './category.types';
