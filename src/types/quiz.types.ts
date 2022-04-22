@@ -1,6 +1,7 @@
 export type QuizModelType = {
   quizName: string;
   quizId: string;
+  quizCategory: string;
   questions: QuesType[];
 };
 
