@@ -6,7 +6,7 @@ import {
 import { addDoc, collection, getDocs, query, where } from 'firebase/firestore';
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { auth, db } from '../firebase';
-import { AuthContextType, LayoutPropType, User } from '../types/types';
+import { AuthContextType, LayoutPropType, UserType } from '../types';
 import { toastHandler, ToastType } from '../utils/utils';
 
 const AuthContext = createContext<AuthContextType>({} as AuthContextType);
@@ -17,7 +17,7 @@ export const AuthProvider = ({ children }: LayoutPropType) => {
   );
   const [token, setToken] = useState<string>(localStorageToken?.token || '');
   const [userId, setUserId] = useState<string>(localStorageToken?.userId || '');
-  const [user, setUser] = useState<User>({});
+  const [user, setUser] = useState<UserType>({});
 
   useEffect(() => {
     if (token && userId) {

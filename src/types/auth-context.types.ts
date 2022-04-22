@@ -12,8 +12,8 @@ export type AuthContextType = {
   setToken: React.Dispatch<React.SetStateAction<string>>;
   userId: string;
   setUserId: React.Dispatch<React.SetStateAction<string>>;
-  user: User;
-  setUser: React.Dispatch<React.SetStateAction<User>>;
+  user: UserType;
+  setUser: React.Dispatch<React.SetStateAction<UserType>>;
   loginHandler: LoginHandlerType;
   signupHandler: SignupHandlerType;
   logoutHandler: LogoutHandlerType;
@@ -23,18 +23,16 @@ export type LayoutPropType = {
   children: React.ReactNode;
 };
 
-export type ToastHandlerType = (type: string, message: string) => void;
-
-export type User =
+export type UserType =
   | {
       email: string;
       name: string;
-      score: Score[];
+      score: ScoreType[];
       uid: string;
     }
   | {};
 
-export type Score = {
+export type ScoreType = {
   categoryName: string;
   result: number;
 };

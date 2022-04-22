@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import { AuthProvider } from './contexts/auth-context';
+import { QuizDataProvider } from './contexts/data-context';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -12,7 +13,9 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <AuthProvider>
-        <App />
+        <QuizDataProvider>
+          <App />
+        </QuizDataProvider>
       </AuthProvider>
     </BrowserRouter>
   </React.StrictMode>
