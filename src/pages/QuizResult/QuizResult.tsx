@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { NavBar } from '../../components';
 import { useQuiz } from '../../contexts/data-context';
 import { QuizModel } from '../../DataModel/quiz.model';
@@ -89,12 +89,12 @@ export const QuizResult = () => {
           })}
         </div>
         <div className='result-footer'>
-          <a
+          <Link
             className='btn btn-link-primary background-primary brd-rd-semi-sq'
-            href='../home/home.html'
+            to={'/categories'}
           >
             Go Home
-          </a>
+          </Link>
         </div>
       </div>
     </>
