@@ -4,6 +4,8 @@ export const QuizModel: QuizModelType[] = [
   {
     quizName: 'html',
     quizCategory: 'easy',
+    image:
+      'https://res.cloudinary.com/donqbxlnc/image/upload/v1650704923/P5ZYmONNF6pgwbBx-zqQWdWnpgQH0S-RGmDRUHpy8CSeaLHLdIFlFiP6hpCAbp192A_ujxeog.png',
     quizId: '71850543-9797-4093-bc63-1e6b26df5d26',
     points: 5,
     questions: [
@@ -122,6 +124,8 @@ export const QuizModel: QuizModelType[] = [
   {
     quizName: 'css',
     quizCategory: 'easy',
+    image:
+      'https://res.cloudinary.com/donqbxlnc/image/upload/v1650706085/CSS-new-features-2021_bc1lgw.png',
     quizId: '85c493d3-04c1-43c1-827f-e6b9286b14e3',
     points: 5,
     questions: [
@@ -241,6 +245,8 @@ export const QuizModel: QuizModelType[] = [
   {
     quizName: 'js',
     quizCategory: 'medium',
+    image:
+      'https://res.cloudinary.com/donqbxlnc/image/upload/v1650705300/javascript_iptnxg.png',
     quizId: 'a846973f-2f31-4988-b958-0073df2d2f58',
     points: 10,
     questions: [

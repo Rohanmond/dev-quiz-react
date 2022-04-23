@@ -6,16 +6,12 @@ type PropType = {
 };
 
 export const QuizCategoryCard: React.FC<PropType> = ({ cardData }) => {
-  const { quizName, quizId } = cardData;
+  const { quizName, quizId, image } = cardData;
 
   return (
     <div className='home-quiz-card brd-rd-semi-sq'>
       <div className='home-quiz-card-img-container brd-rd-semi-sq'>
-        <img
-          className='img-responsive'
-          src='https://picsum.photos/300/400'
-          alt='quiz card-'
-        />
+        <img className='img-responsive' src={image} alt='quiz card-' />
       </div>
       <div className='home-card-header'>
         <h3>{quizName.toUpperCase()} Quiz</h3>

@@ -1,6 +1,7 @@
 export type QuizModelType = {
   quizName: string;
   quizId: string;
+  image: string;
   quizCategory: string;
   questions: QuesType[];
   points: number;
