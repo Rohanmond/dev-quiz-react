@@ -58,20 +58,7 @@ export const Login = () => {
               />
             </div>
           </div>
-          {/* <div className='login-card-item'>
-            <div className='input-container-hz'>
-              <input
-                type='checkbox'
-                name='remember-me-checkbox'
-                value='remember-me'
-                id='remember-me-checkbox'
-              />
-              <label htmlFor='remember-me-checkbox'>Remember me</label>
-            </div>
-            <a className='' href='#'>
-              forgot your password?
-            </a>
-          </div> */}
+
           <div className='login-card-item'>
             <button className='btn btn-link-primary background-primary text-align-center brd-rd-semi-sq'>
               Login
