@@ -32,7 +32,6 @@ function App() {
       <Routes>
         <Route path='/' element={<LandingPage />} />
         <Route path='/categories' element={<QuizCategoryPage />} />
-        <Route path='/questions' element={<QuizQuestions />} />
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<Signup />} />
         <Route path='/:quizId'>

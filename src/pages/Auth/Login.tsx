@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/auth-context';
 
 import './Auth.css';
 export const Login = () => {
   const { loginHandler, token } = useAuth();
+  const location: any = useLocation();
   const navigate = useNavigate();
   const [loginForm, setLoginForm] = useState({
     email: '',
@@ -13,7 +14,7 @@ export const Login = () => {
 
   useEffect(() => {
     if (token) {
-      navigate('/');
+      navigate(location?.state?.from || '/categories', { replace: true });
     }
   });
 

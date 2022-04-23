@@ -26,7 +26,11 @@ export const QuizRules = () => {
             <p>Each questions is of 10 points</p>
             <p>You get 60 seconds to answer each question</p>
           </div>
-          <Link to={`/${quizId}/1`} className='start-quiz-btn font-wt-semibold'>
+          <Link
+            to={`/${quizId}/1`}
+            replace
+            className='start-quiz-btn font-wt-semibold'
+          >
             Start Quiz
           </Link>
         </div>

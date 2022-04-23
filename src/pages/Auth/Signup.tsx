@@ -14,7 +14,7 @@ export const Signup = () => {
 
   useEffect(() => {
     if (token) {
-      navigate('/');
+      navigate('/categories');
     }
   });
 

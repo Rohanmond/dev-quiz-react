@@ -50,8 +50,9 @@ export const QuizQuestions = () => {
         { questionIndex: questionIndex, selectedOption: activeButton },
       ])
     );
-    if (questionIndex === questions?.length) navigate(`/${quizId}/result`);
-    else navigate(`/${quizId}/${Number(questionIndex) + 1}`);
+    if (questionIndex === questions?.length)
+      navigate(`/${quizId}/result`, { replace: true });
+    else navigate(`/${quizId}/${Number(questionIndex) + 1}`, { replace: true });
   };
 
   console.log(activeButton);
