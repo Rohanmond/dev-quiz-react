@@ -18,7 +18,7 @@ export const QuizCategoryCard: React.FC<PropType> = ({ cardData }) => {
         />
       </div>
       <div className='home-card-header'>
-        <h3>{quizName} Quiz</h3>
+        <h3>{quizName.toUpperCase()} Quiz</h3>
       </div>
       <div className='home-quiz-card-content'>
         <p className='text-align-center'>
