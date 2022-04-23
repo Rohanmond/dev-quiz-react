@@ -5,6 +5,7 @@ export const QuizModel: QuizModelType[] = [
     quizName: 'html',
     quizCategory: 'easy',
     quizId: '71850543-9797-4093-bc63-1e6b26df5d26',
+    points: 5,
     questions: [
       {
         question: 'Which of the following is used to create Web Pages ?',
@@ -122,6 +123,7 @@ export const QuizModel: QuizModelType[] = [
     quizName: 'css',
     quizCategory: 'easy',
     quizId: '85c493d3-04c1-43c1-827f-e6b9286b14e3',
+    points: 5,
     questions: [
       {
         question: 'How can you created rounded corners using CSS3?',
@@ -240,6 +242,7 @@ export const QuizModel: QuizModelType[] = [
     quizName: 'js',
     quizCategory: 'medium',
     quizId: 'a846973f-2f31-4988-b958-0073df2d2f58',
+    points: 10,
     questions: [
       {
         question: "<script>document.write( typeof( '1' + 2) ); </script>",

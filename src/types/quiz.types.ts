@@ -3,11 +3,12 @@ export type QuizModelType = {
   quizId: string;
   quizCategory: string;
   questions: QuesType[];
+  points: number;
 };
 
-type QuesType = {
+export type QuesType = {
   question: string;
-  point: number;
+  point?: number;
   options: OptionType[];
 };
 

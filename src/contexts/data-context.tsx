@@ -5,7 +5,7 @@ import { DataContextType, DataStateType, QuizProviderProp } from '../types';
 const QuizContext = createContext<DataContextType>({} as DataContextType);
 
 const initialState: DataStateType = {
-  questions: [],
+  answers: [],
 };
 
 const QuizDataProvider = ({ children }: QuizProviderProp) => {

@@ -2,3 +2,9 @@
   background-color: var(--background-color);
   color: var(--text-color);
 }
+.cursor-pointer {
+  cursor: pointer;
+}
+.color-success {
+  color: var(--success-color);
+}

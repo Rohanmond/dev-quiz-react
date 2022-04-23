@@ -1,13 +1,13 @@
 import React from 'react';
 import { ActionType } from './data-reducer.types';
 
-type Dispatch = (action: ActionType) => void;
+export type Dispatch = (action: ActionType) => void;
 export type DataStateType = {
-  questions: QuestionDataType[];
+  answers: QuestionDataType[];
 };
 export type QuestionDataType = {
   questionIndex: number;
-  selectedOption: string;
+  selectedOption: number;
 };
 
 export type QuizProviderProp = {
