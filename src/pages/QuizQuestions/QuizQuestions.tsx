@@ -19,10 +19,14 @@ export const QuizQuestions = () => {
   }
 
   useEffect(() => {
+    console.log('hello', state, questionIndex);
     if (state.answers.length === 0 && Number(questionIndex) !== 1) {
       const recoveredData = JSON.parse(
         sessionStorage.getItem('answerData') || '[]'
       );
+      console.log(recoveredData);
+      if (recoveredData.length === 0)
+        navigate(`/${quizId}/rules`, { replace: true });
       dispatch({
         type: 'RECOVER_ANSWER_DATA',
         payload: { sessionData: recoveredData },
@@ -50,9 +54,11 @@ export const QuizQuestions = () => {
         { questionIndex: questionIndex, selectedOption: activeButton },
       ])
     );
+
     if (questionIndex === questions?.length)
       navigate(`/${quizId}/result`, { replace: true });
     else navigate(`/${quizId}/${Number(questionIndex) + 1}`, { replace: true });
+    setActiveButton(-1);
   };
 
   console.log(activeButton);

@@ -1,12 +1,15 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { NavBar } from '../../components';
+import { useQuiz } from '../../contexts/data-context';
 import './LandingPage.css';
 export const LandingPage = () => {
   const navigate = useNavigate();
+  const { dispatch } = useQuiz();
 
   useEffect(() => {
     sessionStorage.removeItem('answerData');
+    dispatch({ type: 'RESET' });
   }, []);
   return (
     <div className='landing-container'>

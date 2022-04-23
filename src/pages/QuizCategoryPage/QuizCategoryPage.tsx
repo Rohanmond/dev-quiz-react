@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
 import { NavBar } from '../../components';
+import { useQuiz } from '../../contexts/data-context';
 import { QuizModel } from '../../DataModel/quiz.model';
 import { QuizCategoryCard } from './components/QuizCategoryCard';
 import './QuizCategoryPage.css';
 
 export const QuizCategoryPage = () => {
   const [activeButton, setActiveButton] = useState('easy');
+  const { dispatch } = useQuiz();
   const changeActive = (btn: string) => {
     setActiveButton(btn);
   };
@@ -15,6 +17,7 @@ export const QuizCategoryPage = () => {
 
   useEffect(() => {
     sessionStorage.removeItem('answerData');
+    dispatch({ type: 'RESET' });
   }, []);
 
   return (
