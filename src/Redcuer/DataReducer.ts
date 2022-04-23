@@ -18,6 +18,11 @@ export const quizReducer = (
             })
           : [...state.answers, { ...action.payload }],
       };
+    case 'RECOVER_ANSWER_DATA':
+      return {
+        ...state,
+        answers: [...action.payload.sessionData],
+      };
     case 'RESET':
       return { ...state, answers: [] };
   }

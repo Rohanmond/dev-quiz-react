@@ -6,7 +6,7 @@ type PropType = {
 };
 
 export const QuizCategoryCard: React.FC<PropType> = ({ cardData }) => {
-  const { quizName, quizId, quizCategory, questions } = cardData;
+  const { quizName, quizId } = cardData;
 
   return (
     <div className='home-quiz-card brd-rd-semi-sq'>

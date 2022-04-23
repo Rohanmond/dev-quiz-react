@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { NavBar } from '../../components';
 import { QuizModel } from '../../DataModel/quiz.model';
 import { QuizCategoryCard } from './components/QuizCategoryCard';
@@ -12,6 +12,11 @@ export const QuizCategoryPage = () => {
 
   const quizData = QuizModel.filter((el) => el.quizCategory === activeButton);
   console.log(quizData);
+
+  useEffect(() => {
+    sessionStorage.removeItem('answerData');
+  }, []);
+
   return (
     <div className='home-container'>
       <NavBar />
@@ -52,85 +57,6 @@ export const QuizCategoryPage = () => {
         {quizData.map((el) => {
           return <QuizCategoryCard key={el.quizId} cardData={el} />;
         })}
-        {/* <div className='home-quiz-card brd-rd-semi-sq'>
-          <div className='home-quiz-card-img-container brd-rd-semi-sq'>
-            <img
-              className='img-responsive'
-              src='https://picsum.photos/300/400'
-              alt='quiz card-'
-            />
-          </div>
-          <div className='home-card-header'>
-            <h3>HTML Quiz</h3>
-          </div>
-          <div className='home-quiz-card-content'>
-            <p className='text-align-center'>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere,
-              doloremque!
-            </p>
-          </div>
-          <div className='home-quiz-card-footer'>
-            <a
-              href='../quiz_rules/quiz_rules.html'
-              className='home-quiz-card-footer-btn font-wt-semibold'
-            >
-              Play now
-            </a>
-          </div>
-        </div>
-
-        <div className='home-quiz-card brd-rd-semi-sq'>
-          <div className='home-quiz-card-img-container brd-rd-semi-sq'>
-            <img
-              className='img-responsive'
-              src='https://picsum.photos/300/400'
-              alt='quiz card-'
-            />
-          </div>
-          <div className='home-card-header'>
-            <h3>HTML Quiz</h3>
-          </div>
-          <div className='home-quiz-card-content'>
-            <p className='text-align-center'>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere,
-              doloremque!
-            </p>
-          </div>
-          <div className='home-quiz-card-footer'>
-            <a
-              href='../quiz_rules/quiz_rules.html'
-              className='home-quiz-card-footer-btn font-wt-semibold'
-            >
-              Play now
-            </a>
-          </div>
-        </div>
-        <div className='home-quiz-card brd-rd-semi-sq'>
-          <div className='home-quiz-card-img-container brd-rd-semi-sq'>
-            <img
-              className='img-responsive'
-              src='https://picsum.photos/300/400'
-              alt='quiz card-'
-            />
-          </div>
-          <div className='home-card-header'>
-            <h3>HTML Quiz</h3>
-          </div>
-          <div className='home-quiz-card-content'>
-            <p className='text-align-center'>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere,
-              doloremque!
-            </p>
-          </div>
-          <div className='home-quiz-card-footer'>
-            <a
-              href='../quiz_rules/quiz_rules.html'
-              className='home-quiz-card-footer-btn font-wt-semibold'
-            >
-              Play now
-            </a>
-          </div>
-        </div> */}
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useQuiz } from '../../contexts/data-context';
 import { QuizModel } from '../../DataModel/quiz.model';
@@ -9,7 +9,7 @@ import './QuizQuestions.css';
 export const QuizQuestions = () => {
   const { questionIndex, quizId } = useParams();
   const [activeButton, setActiveButton] = useState(-1);
-  const { dispatch } = useQuiz();
+  const { state, dispatch } = useQuiz();
   const navigate = useNavigate();
   const quizData = QuizModel.find((el) => el.quizId === quizId);
   const questions = quizData?.questions;
@@ -18,6 +18,17 @@ export const QuizQuestions = () => {
     question = questions[Number(questionIndex) - 1] ?? {};
   }
 
+  useEffect(() => {
+    if (state.answers.length === 0 && Number(questionIndex) !== 1) {
+      const recoveredData = JSON.parse(
+        sessionStorage.getItem('answerData') || '[]'
+      );
+      dispatch({
+        type: 'RECOVER_ANSWER_DATA',
+        payload: { sessionData: recoveredData },
+      });
+    }
+  }, []);
   const dispatchQuizAnswer = (
     activeButton: number,
     dispatch: Dispatch,
@@ -32,6 +43,13 @@ export const QuizQuestions = () => {
       type: 'ADD_QUESTION_DATA',
       payload: { questionIndex, selectedOption: activeButton },
     });
+    sessionStorage.setItem(
+      'answerData',
+      JSON.stringify([
+        ...JSON.parse(sessionStorage.getItem('answerData') || '[]'),
+        { questionIndex: questionIndex, selectedOption: activeButton },
+      ])
+    );
     if (questionIndex === questions?.length) navigate(`/${quizId}/result`);
     else navigate(`/${quizId}/${Number(questionIndex) + 1}`);
   };

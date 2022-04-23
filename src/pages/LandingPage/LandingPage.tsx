@@ -1,9 +1,13 @@
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { NavBar } from '../../components';
 import './LandingPage.css';
 export const LandingPage = () => {
   const navigate = useNavigate();
 
+  useEffect(() => {
+    sessionStorage.removeItem('answerData');
+  }, []);
   return (
     <div className='landing-container'>
       <NavBar />

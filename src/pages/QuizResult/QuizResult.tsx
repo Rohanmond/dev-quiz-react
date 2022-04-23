@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { NavBar } from '../../components';
 import { useQuiz } from '../../contexts/data-context';
@@ -26,6 +26,11 @@ export const QuizResult = () => {
       : acc;
   }, 0);
   console.log(results, points);
+
+  useEffect(() => {
+    sessionStorage.removeItem('answerData');
+  }, []);
+
   return (
     <>
       <NavBar />
