@@ -1,13 +1,15 @@
 export type QuizModelType = {
   quizName: string;
   quizId: string;
+  image: string;
   quizCategory: string;
   questions: QuesType[];
+  points: number;
 };
 
-type QuesType = {
+export type QuesType = {
   question: string;
-  point: number;
+  point?: number;
   options: OptionType[];
 };
 

@@ -1,6 +1,36 @@
+import React, { useEffect } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import { NavBar } from '../../components';
+import { useQuiz } from '../../contexts/data-context';
+import { QuizModel } from '../../DataModel/quiz.model';
+
 import './QuizResult.css';
 export const QuizResult = () => {
+  const { quizId } = useParams();
+  const { state } = useQuiz();
+
+  const quizData = QuizModel.find((el) => el.quizId === quizId) || {
+    questions: [],
+    points: 5,
+  };
+  const results = state.answers.map((el) => {
+    return { ...el, ...quizData?.questions[el.questionIndex - 1] };
+  });
+  const eachQuestionPoint = quizData?.points || 5;
+  const totalQuestions = quizData?.questions.length;
+  const points = results.reduce((acc, curr) => {
+    const options = curr.options || [];
+
+    return options[curr.selectedOption]?.isRight
+      ? acc + eachQuestionPoint
+      : acc;
+  }, 0);
+  console.log(results, points);
+
+  useEffect(() => {
+    sessionStorage.removeItem('answerData');
+  }, []);
+
   return (
     <>
       <NavBar />
@@ -9,77 +39,62 @@ export const QuizResult = () => {
           <h3>Result</h3>
         </div>
         <div className='quiz-score'>
-          <p>Final Score: 20/50</p>
+          <p>
+            Final Score: {points}/{eachQuestionPoint * totalQuestions}
+          </p>
         </div>
         <div className='quiz-results-container'>
-          <div className='quiz-result-content'>
-            <p className='font-wt-semibold text-align-center'>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat
-              distinctio ut iste numquam velit rem corporis sequi,
-            </p>
-            <div className='alert background-result brd-rd-semi-sq'>
-              <p className='alert-msg quiz-result'>Micheal</p>
-            </div>
-            <div className='alert background-success brd-rd-semi-sq'>
-              <p className='alert-msg quiz-result'>Reginald</p>
-            </div>
-            <div className='alert background-danger brd-rd-semi-sq'>
-              <p className='alert-msg quiz-result'>Brandon</p>
-            </div>
-          </div>
-          <div className='quiz-result-content'>
-            <p className='font-wt-semibold text-align-center'>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat
-              distinctio ut iste numquam velit rem corporis sequi,
-            </p>
-            <div className='alert background-success brd-rd-semi-sq'>
-              <p className='alert-msg quiz-result'>Micheal</p>
-            </div>
-            <div className='alert background-result brd-rd-semi-sq'>
-              <p className='alert-msg quiz-result'>Reginald</p>
-            </div>
-            <div className='alert background-danger brd-rd-semi-sq'>
-              <p className='alert-msg quiz-result'>Brandon</p>
-            </div>
-          </div>
-          <div className='quiz-result-content'>
-            <p className='font-wt-semibold text-align-center'>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat
-              distinctio ut iste numquam velit rem corporis sequi,
-            </p>
-            <div className='alert background-danger brd-rd-semi-sq'>
-              <p className='alert-msg quiz-result'>Micheal</p>
-            </div>
-            <div className='alert background-success brd-rd-semi-sq'>
-              <p className='alert-msg quiz-result'>Reginald</p>
-            </div>
-            <div className='alert background-result brd-rd-semi-sq'>
-              <p className='alert-msg quiz-result'>Brandon</p>
-            </div>
-          </div>
-          <div className='quiz-result-content'>
-            <p className='font-wt-semibold text-align-center'>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat
-              distinctio ut iste numquam velit rem corporis sequi,
-            </p>
-            <div className='alert background-success brd-rd-semi-sq'>
-              <p className='alert-msg quiz-result'>Micheal</p>
-            </div>
-            <div className='alert background-result brd-rd-semi-sq'>
-              <p className='alert-msg quiz-result'>Reginald</p>
-            </div>
-            <div className='alert background-result brd-rd-semi-sq'>
-              <p className='alert-msg quiz-result'>Brandon</p>
-            </div>
-          </div>
+          {results.map((el) => {
+            const userRight = el.options[el.selectedOption].isRight;
+            return (
+              <div key={el.questionIndex} className='quiz-result-content'>
+                <p className='font-wt-semibold text-align-center'>
+                  {el.question}
+                </p>
+                {el.options.map((option, index) => {
+                  return (
+                    <React.Fragment key={option.value}>
+                      {userRight ? (
+                        <div
+                          className={`alert  brd-rd-semi-sq ${
+                            option.isRight
+                              ? 'background-success'
+                              : 'background-result'
+                          }`}
+                        >
+                          <p className='alert-msg quiz-result'>
+                            {option.value}
+                          </p>
+                        </div>
+                      ) : (
+                        <div
+                          className={`alert  brd-rd-semi-sq ${
+                            el.selectedOption === index
+                              ? 'background-danger'
+                              : option.isRight
+                              ? 'background-success'
+                              : 'background-result'
+                          }`}
+                        >
+                          <p className='alert-msg quiz-result'>
+                            {option.value}
+                          </p>
+                        </div>
+                      )}
+                    </React.Fragment>
+                  );
+                })}
+              </div>
+            );
+          })}
         </div>
         <div className='result-footer'>
-          <a
+          <Link
             className='btn btn-link-primary background-primary brd-rd-semi-sq'
-            href='../home/home.html'
+            to={'/categories'}
           >
             Go Home
-          </a>
+          </Link>
         </div>
       </div>
     </>
