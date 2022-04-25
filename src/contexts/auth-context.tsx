@@ -3,7 +3,14 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from 'firebase/auth';
-import { addDoc, collection, getDocs, query, where } from 'firebase/firestore';
+import {
+  addDoc,
+  collection,
+  getDocs,
+  onSnapshot,
+  query,
+  where,
+} from 'firebase/firestore';
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { auth, db } from '../firebase';
 import { AuthContextType, LayoutPropType, UserType } from '../types';
@@ -23,14 +30,12 @@ export const AuthProvider = ({ children }: LayoutPropType) => {
     if (token && userId) {
       (async () => {
         const q = query(collection(db, 'users'), where('uid', '==', userId));
-        const queryRes = await getDocs(q);
-        queryRes.forEach((doc) => {
-          const userObj: any = doc.data();
-          console.log(userObj);
+        onSnapshot(q, (data) => {
+          setUser(data.docs[0].data());
         });
       })();
     }
-  }, [token, userId]);
+  }, [token]);
 
   const loginHandler = async (email: string, password: string) => {
     try {

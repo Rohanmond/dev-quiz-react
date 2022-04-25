@@ -13,9 +13,12 @@ import {
 } from './pages';
 import { PrivateRoute } from './components';
 import { useQuiz } from './contexts/data-context';
+import { useAuth } from './contexts/auth-context';
 
 function App() {
   const { state } = useQuiz();
+  const { user } = useAuth();
+  console.log(user);
 
   return (
     <div className='App'>

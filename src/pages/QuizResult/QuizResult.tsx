@@ -3,8 +3,10 @@ import { Link, useParams } from 'react-router-dom';
 import { NavBar } from '../../components';
 import { useQuiz } from '../../contexts/data-context';
 import { QuizModel } from '../../DataModel/quiz.model';
+import { addScore } from '../../Services/result-service';
 
 import './QuizResult.css';
+
 export const QuizResult = () => {
   const { quizId } = useParams();
   const { state } = useQuiz();
@@ -29,6 +31,7 @@ export const QuizResult = () => {
 
   useEffect(() => {
     sessionStorage.removeItem('answerData');
+    if (quizId) addScore(points, quizId);
   }, []);
 
   return (
