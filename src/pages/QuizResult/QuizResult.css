@@ -44,3 +44,14 @@
 .result-footer a {
   text-align: center;
 }
+.result-question-container {
+  position: relative;
+}
+.not-selected {
+  position: absolute;
+  right: 0;
+}
+.result-question-status {
+  font-size: 1.5rem;
+  margin-right: 0.25rem;
+}

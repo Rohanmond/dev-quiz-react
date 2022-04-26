@@ -8,3 +8,9 @@
 .color-success {
   color: var(--success-color);
 }
+.color-danger {
+  color: var(--danger-color);
+}
+.color-warn {
+  color: var(--yellow-600);
+}

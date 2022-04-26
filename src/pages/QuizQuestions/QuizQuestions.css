@@ -62,3 +62,10 @@
 .quiz-question-footer > a:last-of-type:hover {
   color: var(--success-color);
 }
+.timer {
+  font-size: 1.15rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  justify-content: center;
+}

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useQuiz } from '../../contexts/data-context';
 import { QuizModel } from '../../DataModel/quiz.model';
@@ -10,6 +10,9 @@ export const QuizQuestions = () => {
   const { questionIndex, quizId } = useParams();
   const [activeButton, setActiveButton] = useState(-1);
   const { state, dispatch } = useQuiz();
+  const [timer, setTimer] = useState(
+    Number(JSON.parse(sessionStorage.getItem('quiz-timer') || '45'))
+  );
   const navigate = useNavigate();
   const quizData = QuizModel.find((el) => el.quizId === quizId);
   const questions = quizData?.questions;
@@ -17,6 +20,22 @@ export const QuizQuestions = () => {
   if (questions) {
     question = questions[Number(questionIndex) - 1] ?? {};
   }
+  useEffect(() => {
+    let id = setInterval(() => {
+      if (timer > 1) {
+        setTimer(timer - 1);
+        sessionStorage.setItem('quiz-timer', JSON.stringify(timer - 1));
+      } else {
+        dispatchQuizAnswer(
+          activeButton,
+          dispatch,
+          Number(questionIndex),
+          questions
+        );
+      }
+    }, 1000);
+    return () => clearInterval(id);
+  }, [timer]);
 
   useEffect(() => {
     console.log('hello', state, questionIndex);
@@ -39,10 +58,10 @@ export const QuizQuestions = () => {
     questionIndex: number,
     questions: QuesType[] | undefined
   ) => {
-    if (activeButton === -1) {
-      toastHandler(ToastType.Info, 'Pls select one option');
-      return;
-    }
+    // if (activeButton === -1) {
+    //   toastHandler(ToastType.Info, 'Pls select one option');
+    //   return;
+    // }
     dispatch({
       type: 'ADD_QUESTION_DATA',
       payload: { questionIndex, selectedOption: activeButton },
@@ -59,7 +78,18 @@ export const QuizQuestions = () => {
       navigate(`/${quizId}/result`, { replace: true });
     else navigate(`/${quizId}/${Number(questionIndex) + 1}`, { replace: true });
     setActiveButton(-1);
+    setTimer(45);
+    sessionStorage.removeItem('quiz-timer');
   };
+  // if (timer <= 0) {
+  //   console.log('inside rimer');
+  //   dispatchQuizAnswer(
+  //     activeButton,
+  //     dispatch,
+  //     Number(questionIndex),
+  //     questions
+  //   );
+  // }
 
   console.log(activeButton);
   return (
@@ -71,7 +101,12 @@ export const QuizQuestions = () => {
         <p>
           Question: {questionIndex} / {questions?.length}
         </p>
-        <p>Timer</p>
+        <p
+          className={`timer ${timer <= 10 ? 'color-danger' : 'color-success'}`}
+        >
+          <i className='fas fa-clock'></i>
+          <p> {timer} Sec</p>
+        </p>
       </div>
       <p>{question?.question}</p>
       <div className='quiz-question-options'>
