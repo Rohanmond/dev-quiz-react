@@ -32,7 +32,9 @@ export const Dashboard = () => {
     <div className='dashboard-container'>
       <div className='dashboard-details-container'>
         {user.score.length === 0 ? (
-          <div>You havn't played any quiz yet</div>
+          <div className='text-lg font-wt-semibold text-align-center'>
+            You havn't played any quiz yet
+          </div>
         ) : (
           user.score.map((el) => {
             return (

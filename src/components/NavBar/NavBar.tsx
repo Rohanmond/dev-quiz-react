@@ -26,7 +26,10 @@ export const NavBar = () => {
             <i className='fas fa-sun nav-link-item-icon'></i>
           </li>
           <li className='nav-link-item'>
-            <i className='fas fa-trophy nav-link-item-icon'></i>
+            <i
+              onClick={() => navigate('/leader-board')}
+              className='fas fa-trophy nav-link-item-icon'
+            ></i>
           </li>
           <li className='nav-link-item'>
             {!token && (

@@ -17,6 +17,7 @@ import { useAuth } from './contexts/auth-context';
 import { Profile } from './pages/Profile/Profile';
 import { Details } from './pages/Profile/components/Details/Details';
 import { Dashboard } from './pages/Profile/components/Dashboard/Dashboard';
+import { LeaderBoard } from './pages/LeaderBoard/LeaderBoard';
 
 function App() {
   const { state } = useQuiz();
@@ -79,6 +80,7 @@ function App() {
           <Route path='details' element={<Details />} />
           <Route path='dashboard' element={<Dashboard />} />
         </Route>
+        <Route path='/leader-board' element={<LeaderBoard />} />
       </Routes>
       {/* <Footer /> */}
     </div>

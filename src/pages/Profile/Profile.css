@@ -1,5 +1,5 @@
 .profile-outer-container {
-  margin-top: 8rem;
+  margin-top: 1rem;
   display: flex;
   width: 100%;
   height: fit-content;
@@ -39,9 +39,6 @@
 }
 
 @media screen and (max-width: 750px) {
-  .profile-outer-container {
-    margin-top: 9rem;
-  }
   .profile-nav-item {
     font-size: 1rem;
     font-weight: 520;
@@ -49,9 +46,6 @@
   }
 }
 @media screen and (max-width: 500px) {
-  .profile-outer-container {
-    margin-top: 7rem;
-  }
   .profile-container {
     width: 100%;
     min-height: 100%;
