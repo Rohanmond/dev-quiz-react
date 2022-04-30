@@ -19,7 +19,6 @@ export const Profile = () => {
             <NavLink to={'/profile/details'} className={toggleActive}>
               Profile Information
             </NavLink>
-            {/*address management and order management will be added later on*/}
             <NavLink to={'/profile/dashboard'} className={toggleActive}>
               Dashboard
             </NavLink>

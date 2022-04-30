@@ -14,7 +14,6 @@ export const LeaderBoard = () => {
       const userData: any = [];
       const q = query(collection(db, 'users'));
       onSnapshot(q, (data) => {
-        // userData.push(data.docs[0].data());
         data.docs.forEach((el) => {
           userData.push(el.data());
         });

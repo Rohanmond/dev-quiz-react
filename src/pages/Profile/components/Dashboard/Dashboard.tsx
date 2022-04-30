@@ -60,28 +60,6 @@ export const Dashboard = () => {
             );
           })
         )}
-        {/* <div className='dashboard-details-item'>
-          <div className='dash-details-left'>
-            <p>Quiz Name</p>
-            <button className='btn btn-secondary btn-sm outlined-secondary brd-rd-semi-sq'>
-              Play Again
-            </button>
-          </div>
-          <div className='dash-details-right'>
-            <p>Score</p>
-          </div>
-        </div>
-        <div className='dashboard-details-item'>
-          <div className='dash-details-left'>
-            <p>Quiz Name</p>
-            <button className='btn btn-secondary btn-sm outlined-secondary brd-rd-semi-sq'>
-              Play Again
-            </button>
-          </div>
-          <div className='dash-details-right'>
-            <p>Score</p>
-          </div>
-        </div> */}
       </div>
     </div>
   );
