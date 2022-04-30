@@ -52,16 +52,13 @@ export const QuizQuestions = () => {
       });
     }
   }, []);
+
   const dispatchQuizAnswer = (
     activeButton: number,
     dispatch: Dispatch,
     questionIndex: number,
     questions: QuesType[] | undefined
   ) => {
-    // if (activeButton === -1) {
-    //   toastHandler(ToastType.Info, 'Pls select one option');
-    //   return;
-    // }
     dispatch({
       type: 'ADD_QUESTION_DATA',
       payload: { questionIndex, selectedOption: activeButton },
@@ -81,17 +78,7 @@ export const QuizQuestions = () => {
     setTimer(45);
     sessionStorage.removeItem('quiz-timer');
   };
-  // if (timer <= 0) {
-  //   console.log('inside rimer');
-  //   dispatchQuizAnswer(
-  //     activeButton,
-  //     dispatch,
-  //     Number(questionIndex),
-  //     questions
-  //   );
-  // }
 
-  console.log(activeButton);
   return (
     <div className='quiz-question-container'>
       <div className='quiz-question-header'>
@@ -101,12 +88,12 @@ export const QuizQuestions = () => {
         <p>
           Question: {questionIndex} / {questions?.length}
         </p>
-        <p
+        <div
           className={`timer ${timer <= 10 ? 'color-danger' : 'color-success'}`}
         >
           <i className='fas fa-clock'></i>
           <p> {timer} Sec</p>
-        </p>
+        </div>
       </div>
       <p>{question?.question}</p>
       <div className='quiz-question-options'>
@@ -125,7 +112,15 @@ export const QuizQuestions = () => {
         })}
       </div>
       <div className='quiz-question-footer'>
-        <Link to={'/categories'}>Quit Game</Link>
+        <Link
+          onClick={() => {
+            setTimer(45);
+            sessionStorage.removeItem('quiz-timer');
+          }}
+          to={'/categories'}
+        >
+          Quit Game
+        </Link>
         {Number(questionIndex) === questions?.length ? (
           <p
             className='cursor-pointer color-success'

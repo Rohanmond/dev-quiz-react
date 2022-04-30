@@ -6,7 +6,6 @@ import {
 import {
   addDoc,
   collection,
-  getDocs,
   onSnapshot,
   query,
   where,
@@ -24,14 +23,19 @@ export const AuthProvider = ({ children }: LayoutPropType) => {
   );
   const [token, setToken] = useState<string>(localStorageToken?.token || '');
   const [userId, setUserId] = useState<string>(localStorageToken?.userId || '');
-  const [user, setUser] = useState<UserType>({});
+  const [user, setUser] = useState<UserType>({
+    name: '',
+    email: '',
+    score: [],
+    uid: '',
+  });
 
   useEffect(() => {
     if (token && userId) {
       (async () => {
         const q = query(collection(db, 'users'), where('uid', '==', userId));
         onSnapshot(q, (data) => {
-          setUser(data.docs[0].data());
+          setUser(data.docs[0].data() as UserType);
         });
       })();
     }
@@ -88,7 +92,7 @@ export const AuthProvider = ({ children }: LayoutPropType) => {
     signOut(auth);
     localStorage.removeItem('loginItems');
     setToken('');
-    setUser({});
+    setUser({ name: '', email: '', score: [], uid: '' });
     setUserId('');
   };
 

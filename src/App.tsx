@@ -14,6 +14,9 @@ import {
 import { PrivateRoute } from './components';
 import { useQuiz } from './contexts/data-context';
 import { useAuth } from './contexts/auth-context';
+import { Profile } from './pages/Profile/Profile';
+import { Details } from './pages/Profile/components/Details/Details';
+import { Dashboard } from './pages/Profile/components/Dashboard/Dashboard';
 
 function App() {
   const { state } = useQuiz();
@@ -64,6 +67,17 @@ function App() {
               )
             }
           />
+        </Route>
+        <Route
+          path='/profile'
+          element={
+            <PrivateRoute>
+              <Profile />
+            </PrivateRoute>
+          }
+        >
+          <Route path='details' element={<Details />} />
+          <Route path='dashboard' element={<Dashboard />} />
         </Route>
       </Routes>
       {/* <Footer /> */}
