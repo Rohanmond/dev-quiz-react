@@ -2,7 +2,6 @@ import { collection, onSnapshot, query, where } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../../../contexts/auth-context';
-import { useQuiz } from '../../../../contexts/data-context';
 import { QuizModel } from '../../../../DataModel/quiz.model';
 import { db } from '../../../../firebase';
 import { UserType } from '../../../../types';
@@ -27,7 +26,7 @@ export const Dashboard = () => {
       })();
     }
   }, []);
-  console.log('dashboard', user);
+
   return (
     <div className='dashboard-container'>
       <div className='dashboard-details-container'>

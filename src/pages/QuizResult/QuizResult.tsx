@@ -4,7 +4,6 @@ import { NavBar } from '../../components';
 import { useQuiz } from '../../contexts/data-context';
 import { QuizModel } from '../../DataModel/quiz.model';
 import { addScore } from '../../Services/result-service';
-
 import './QuizResult.css';
 
 export const QuizResult = () => {

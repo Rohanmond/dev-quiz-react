@@ -1,11 +1,11 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useQuiz } from '../../contexts/data-context';
 import { QuizModel } from '../../DataModel/quiz.model';
 import { Dispatch } from '../../types/data-context.types';
 import { QuesType } from '../../types/quiz.types';
-import { toastHandler, ToastType } from '../../utils/utils';
 import './QuizQuestions.css';
+
 export const QuizQuestions = () => {
   const { questionIndex, quizId } = useParams();
   const [activeButton, setActiveButton] = useState(-1);

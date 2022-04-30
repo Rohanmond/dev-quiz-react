@@ -4,7 +4,7 @@ import { useAuth } from '../../contexts/auth-context';
 import './NavBar.css';
 export const NavBar = () => {
   const navigate = useNavigate();
-  const { token, logoutHandler } = useAuth();
+  const { token } = useAuth();
 
   return (
     <nav className='navigation landing-nav'>

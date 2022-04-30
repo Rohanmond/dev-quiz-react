@@ -1,10 +1,9 @@
 import { collection, onSnapshot, query } from 'firebase/firestore';
 import { useEffect, useMemo, useState } from 'react';
 import { NavBar } from '../../components';
-import { useAuth } from '../../contexts/auth-context';
 import { QuizModel } from '../../DataModel/quiz.model';
 import { db } from '../../firebase';
-import { ScoreType, UserType } from '../../types';
+import { UserType } from '../../types';
 import './LeaderBoard.css';
 
 export const LeaderBoard = () => {
@@ -22,7 +21,6 @@ export const LeaderBoard = () => {
       });
     })();
   }, []);
-  console.log(userData, 'userDataq');
 
   const users = useMemo(() => {
     let users = [];
@@ -39,7 +37,7 @@ export const LeaderBoard = () => {
     users.sort((a, b) => b.score - a.score);
     return users;
   }, [userData]);
-  console.log(users, 'users');
+
   return (
     <div>
       <NavBar />

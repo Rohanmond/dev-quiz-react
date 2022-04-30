@@ -2,6 +2,7 @@ import { Link, useParams } from 'react-router-dom';
 import { NavBar } from '../../components';
 import { QuizModel } from '../../DataModel/quiz.model';
 import './QuizRules.css';
+
 export const QuizRules = () => {
   const { quizId } = useParams();
 

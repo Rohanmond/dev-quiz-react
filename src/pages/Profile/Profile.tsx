@@ -10,6 +10,7 @@ export const Profile = () => {
       ? 'profile-nav-item nav-link-active'
       : 'profile-nav-item nav-link';
   };
+
   return (
     <>
       <NavBar />
