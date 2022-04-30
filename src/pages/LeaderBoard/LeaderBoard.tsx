@@ -8,7 +8,6 @@ import { ScoreType, UserType } from '../../types';
 import './LeaderBoard.css';
 
 export const LeaderBoard = () => {
-  const { user } = useAuth();
   const [userData, setUserData] = useState([]);
   useEffect(() => {
     (async () => {
