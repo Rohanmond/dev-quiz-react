@@ -118,6 +118,7 @@ export const QuizQuestions = () => {
             sessionStorage.removeItem('quiz-timer');
           }}
           to={'/categories'}
+          className='quit-game'
         >
           Quit Game
         </Link>
