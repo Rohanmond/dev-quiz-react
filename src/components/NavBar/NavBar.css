@@ -1,11 +1,9 @@
 .nav-link-item .login-btn {
   padding: 0.375rem 0.75rem;
-  color: var(--text-color);
+
   margin: 0 0.5rem;
 }
-.nav-link-item .login-btn:hover {
-  color: var(--text-color);
-}
+
 .nav-link-item-icon {
   padding: 0.5rem;
   font-size: 1.75rem;

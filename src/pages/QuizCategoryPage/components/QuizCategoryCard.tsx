@@ -11,7 +11,11 @@ export const QuizCategoryCard: React.FC<PropType> = ({ cardData }) => {
   return (
     <div className='home-quiz-card brd-rd-semi-sq'>
       <div className='home-quiz-card-img-container brd-rd-semi-sq'>
-        <img className='img-responsive' src={image} alt='quiz card-' />
+        <img
+          className='img-responsive brd-rd-semi-sq'
+          src={image}
+          alt='quiz card-'
+        />
       </div>
       <div className='home-card-header'>
         <h3>{quizName.toUpperCase()} Quiz</h3>

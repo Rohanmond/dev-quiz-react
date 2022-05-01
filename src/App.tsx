@@ -18,14 +18,16 @@ import { Profile } from './pages/Profile/Profile';
 import { Details } from './pages/Profile/components/Details/Details';
 import { Dashboard } from './pages/Profile/components/Dashboard/Dashboard';
 import { LeaderBoard } from './pages/LeaderBoard/LeaderBoard';
+import { useTheme } from './contexts/theme-context';
 
 function App() {
   const { state } = useQuiz();
   const { user } = useAuth();
+  const { theme } = useTheme();
   console.log(user);
 
   return (
-    <div className='App'>
+    <div className='App' data-theme={theme}>
       <ToastContainer
         position='bottom-right'
         autoClose={false}

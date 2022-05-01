@@ -1,21 +1,31 @@
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/auth-context';
+import { useTheme } from '../../contexts/theme-context';
 
 import './NavBar.css';
 export const NavBar = () => {
   const navigate = useNavigate();
   const { token } = useAuth();
+  const { changeTheme, theme } = useTheme();
 
   return (
     <nav className='navigation landing-nav'>
       <div className='nav-left'>
         <div className='nav-logo-container'>
           <NavLink to='/'>
-            <img
-              className='hero-logo quiz-hero-logo'
-              src='https://res.cloudinary.com/donqbxlnc/image/upload/v1649996081/DevQuiz_txfczb.png'
-              alt='nav logo'
-            />
+            {theme === 'dark' ? (
+              <img
+                className='hero-logo quiz-hero-logo'
+                src='https://res.cloudinary.com/donqbxlnc/image/upload/v1649996081/DevQuiz_txfczb.png'
+                alt='nav logo'
+              />
+            ) : (
+              <img
+                className='hero-logo quiz-hero-logo'
+                src='https://res.cloudinary.com/donqbxlnc/image/upload/v1651425613/dev-quiz-dark_ukvlnc.png'
+                alt='nav logo'
+              />
+            )}
           </NavLink>
         </div>
       </div>
@@ -23,7 +33,10 @@ export const NavBar = () => {
       <div className='nav-right'>
         <ul className='nav-links'>
           <li className='nav-link-item'>
-            <i className='fas fa-sun nav-link-item-icon'></i>
+            <i
+              onClick={changeTheme}
+              className='fas fa-sun nav-link-item-icon'
+            ></i>
           </li>
           <li className='nav-link-item'>
             <i

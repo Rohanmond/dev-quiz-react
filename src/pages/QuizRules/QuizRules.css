@@ -1,5 +1,5 @@
 .quiz-rules-content {
-  border: 2px solid var(--grey-200);
+  border: 2px solid var(--text-color);
   padding: 3rem;
   display: flex;
   flex-direction: column;
@@ -8,7 +8,7 @@
 }
 .quiz-rules-header {
   padding-top: 1.5rem;
-  color: var(--yellow-200);
+  color: var(--yellow-600);
 }
 .rules-details {
   display: flex;
@@ -21,16 +21,16 @@
   font-size: 1.3rem;
 }
 .go-back-btn {
-  color: var(--grey-200);
+  color: var(--text-color);
   font-size: 1.2rem;
   padding: 0.5rem;
   margin: 1rem 0;
 }
 .go-back-btn:hover {
-  color: var(--warn-color);
+  color: var(--danger-color);
 }
 .start-quiz-btn {
-  color: var(--grey-200);
+  color: var(--text-color);
   font-size: 1.2rem;
 }
 .start-quiz-btn:hover {

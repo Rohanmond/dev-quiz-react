@@ -1,5 +1,21 @@
-:root {
+/* :root {
   --background-color: #0c0d13;
   --text-color: var(--white-color);
   --secondary-background: #0d1d31;
+} */
+
+[data-theme='dark'] {
+  --background-color: #0c0d13;
+  --text-color: var(--white-color);
+  --secondary-background: #0d1d31;
+}
+[data-theme='light'] {
+  --nav-background-color: #ffffff;
+  --background-color: #d4f1f4;
+  --secondary-background: #43a6c6;
+  --text-color: #0c0d13;
+  --text-secondary-color: var(--grey-600);
+  --nav-background-hover-color: var(--blue-200);
+
+  --background-transparent: rgba(0, 0, 0, 0.7);
 }
