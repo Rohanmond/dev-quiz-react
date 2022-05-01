@@ -3,8 +3,9 @@ import { Link, useParams } from 'react-router-dom';
 import { NavBar } from '../../components';
 import { useQuiz } from '../../contexts/data-context';
 import { QuizModel } from '../../DataModel/quiz.model';
-
+import { addScore } from '../../Services/result-service';
 import './QuizResult.css';
+
 export const QuizResult = () => {
   const { quizId } = useParams();
   const { state } = useQuiz();
@@ -29,6 +30,7 @@ export const QuizResult = () => {
 
   useEffect(() => {
     sessionStorage.removeItem('answerData');
+    if (quizId) addScore(points, quizId);
   }, []);
 
   return (
@@ -45,10 +47,29 @@ export const QuizResult = () => {
         </div>
         <div className='quiz-results-container'>
           {results.map((el) => {
-            const userRight = el.options[el.selectedOption].isRight;
+            const userRight = el.options[el.selectedOption]?.isRight;
             return (
               <div key={el.questionIndex} className='quiz-result-content'>
                 <p className='font-wt-semibold text-align-center'>
+                  <span className='result-question-status'>
+                    {userRight ? (
+                      <i
+                        title='correct'
+                        className='fas fa-check-circle color-success'
+                      ></i>
+                    ) : userRight === false ? (
+                      <i
+                        title='wrong'
+                        className='fas fa-times-circle color-danger'
+                      ></i>
+                    ) : (
+                      <i
+                        title='not-selected'
+                        className='fas fa-exclamation-triangle color-warn'
+                      ></i>
+                    )}
+                  </span>
+                  {'     '}
                   {el.question}
                 </p>
                 {el.options.map((option, index) => {

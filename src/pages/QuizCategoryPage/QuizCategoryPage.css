@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
-  gap: 2rem;
+  gap: 1.25rem;
 }
 
 .home-header {
@@ -73,7 +73,7 @@
 }
 
 .home-quiz-card-img-container img {
-  max-height: 14rem;
+  height: 14rem;
 }
 .home-quiz-card-header {
   padding: 0.5rem;

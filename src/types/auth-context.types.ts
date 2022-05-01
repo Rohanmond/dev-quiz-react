@@ -23,16 +23,14 @@ export type LayoutPropType = {
   children: React.ReactNode;
 };
 
-export type UserType =
-  | {
-      email: string;
-      name: string;
-      score: ScoreType[];
-      uid: string;
-    }
-  | {};
+export type UserType = {
+  email: string;
+  name: string;
+  score: ScoreType[];
+  uid: string;
+};
 
 export type ScoreType = {
-  categoryName: string;
-  result: number;
+  quizId: string;
+  score: number;
 };

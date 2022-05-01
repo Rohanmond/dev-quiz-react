@@ -23,7 +23,7 @@ export const QuizCategoryPage = () => {
   return (
     <div className='home-container'>
       <NavBar />
-      <h1>Quiz Category</h1>
+      <h2>Quiz Category</h2>
       <div className='home-buttons'>
         <button
           onClick={() => changeActive('easy')}

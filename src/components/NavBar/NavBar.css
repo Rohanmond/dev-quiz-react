@@ -6,9 +6,17 @@
 .nav-link-item .login-btn:hover {
   color: var(--text-color);
 }
-
+.nav-link-item-icon {
+  padding: 0.5rem;
+  font-size: 1.75rem;
+  cursor: pointer;
+  color: var(--text-color);
+}
+.nav-link-item-icon:hover {
+  color: var(--blue-400);
+}
 .quiz-hero-logo {
-  max-width: 5rem;
+  width: 5rem;
   padding-left: 0.25rem;
 }
 .landing-nav {

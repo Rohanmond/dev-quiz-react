@@ -3,7 +3,13 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from 'firebase/auth';
-import { addDoc, collection, getDocs, query, where } from 'firebase/firestore';
+import {
+  addDoc,
+  collection,
+  onSnapshot,
+  query,
+  where,
+} from 'firebase/firestore';
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { auth, db } from '../firebase';
 import { AuthContextType, LayoutPropType, UserType } from '../types';
@@ -17,20 +23,23 @@ export const AuthProvider = ({ children }: LayoutPropType) => {
   );
   const [token, setToken] = useState<string>(localStorageToken?.token || '');
   const [userId, setUserId] = useState<string>(localStorageToken?.userId || '');
-  const [user, setUser] = useState<UserType>({});
+  const [user, setUser] = useState<UserType>({
+    name: '',
+    email: '',
+    score: [],
+    uid: '',
+  });
 
   useEffect(() => {
     if (token && userId) {
       (async () => {
         const q = query(collection(db, 'users'), where('uid', '==', userId));
-        const queryRes = await getDocs(q);
-        queryRes.forEach((doc) => {
-          const userObj: any = doc.data();
-          console.log(userObj);
+        onSnapshot(q, (data) => {
+          setUser(data.docs[0].data() as UserType);
         });
       })();
     }
-  }, [token, userId]);
+  }, [token]);
 
   const loginHandler = async (email: string, password: string) => {
     try {
@@ -83,7 +92,7 @@ export const AuthProvider = ({ children }: LayoutPropType) => {
     signOut(auth);
     localStorage.removeItem('loginItems');
     setToken('');
-    setUser({});
+    setUser({ name: '', email: '', score: [], uid: '' });
     setUserId('');
   };
 

@@ -1,9 +1,10 @@
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/auth-context';
+
 import './NavBar.css';
 export const NavBar = () => {
   const navigate = useNavigate();
-  const { token, logoutHandler } = useAuth();
+  const { token } = useAuth();
 
   return (
     <nav className='navigation landing-nav'>
@@ -18,31 +19,18 @@ export const NavBar = () => {
           </NavLink>
         </div>
       </div>
-      <div className='nav-mid'>
-        <input
-          placeholder='search quiz'
-          //   value={input}
-          //   onChange={(e) => {
-          //     setInput(e.target.value);
-          //   }}
-          //   onKeyDown={(e) => {
-          //     if (e.key === 'Enter' || e.target.value === '' || e.keyCode === 8) {
-          //       dispatch({
-          //         type: ActionType.ChangeFilter,
-          //         payload: {
-          //           filterType: Filters.Search,
-          //           filterValue: e.target.value,
-          //         },
-          //       });
-          //       navigate('/products');
-          //     }
-          //   }}
-          className='nav-search brd-rd-semi-sq nav-text-input'
-          type='search'
-        />
-      </div>
+      <div className='nav-mid'></div>
       <div className='nav-right'>
         <ul className='nav-links'>
+          <li className='nav-link-item'>
+            <i className='fas fa-sun nav-link-item-icon'></i>
+          </li>
+          <li className='nav-link-item'>
+            <i
+              onClick={() => navigate('/leader-board')}
+              className='fas fa-trophy nav-link-item-icon'
+            ></i>
+          </li>
           <li className='nav-link-item'>
             {!token && (
               <button
@@ -53,12 +41,10 @@ export const NavBar = () => {
               </button>
             )}
             {token && (
-              <button
-                onClick={() => logoutHandler()}
-                className='btn btn-link-primary background-primary brd-rd-semi-sq login-btn'
-              >
-                Logout
-              </button>
+              <i
+                onClick={() => navigate('/profile/details')}
+                className='far fa-user-circle nav-link-item-icon'
+              ></i>
             )}
           </li>
         </ul>

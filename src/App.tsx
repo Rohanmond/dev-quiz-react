@@ -13,9 +13,16 @@ import {
 } from './pages';
 import { PrivateRoute } from './components';
 import { useQuiz } from './contexts/data-context';
+import { useAuth } from './contexts/auth-context';
+import { Profile } from './pages/Profile/Profile';
+import { Details } from './pages/Profile/components/Details/Details';
+import { Dashboard } from './pages/Profile/components/Dashboard/Dashboard';
+import { LeaderBoard } from './pages/LeaderBoard/LeaderBoard';
 
 function App() {
   const { state } = useQuiz();
+  const { user } = useAuth();
+  console.log(user);
 
   return (
     <div className='App'>
@@ -62,6 +69,18 @@ function App() {
             }
           />
         </Route>
+        <Route
+          path='/profile'
+          element={
+            <PrivateRoute>
+              <Profile />
+            </PrivateRoute>
+          }
+        >
+          <Route path='details' element={<Details />} />
+          <Route path='dashboard' element={<Dashboard />} />
+        </Route>
+        <Route path='/leader-board' element={<LeaderBoard />} />
       </Routes>
       {/* <Footer /> */}
     </div>
