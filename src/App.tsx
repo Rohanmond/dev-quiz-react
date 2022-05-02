@@ -19,15 +19,19 @@ import { Details } from './pages/Profile/components/Details/Details';
 import { Dashboard } from './pages/Profile/components/Dashboard/Dashboard';
 import { LeaderBoard } from './pages/LeaderBoard/LeaderBoard';
 import { useTheme } from './contexts/theme-context';
+import { useLoader } from './contexts/loader-context';
+import { Loader } from './components/Loader/Loader';
 
 function App() {
   const { state } = useQuiz();
   const { user } = useAuth();
   const { theme } = useTheme();
+  const { showLoader } = useLoader();
   console.log(user);
 
   return (
     <div className='App' data-theme={theme}>
+      {showLoader ? <Loader /> : null}
       <ToastContainer
         position='bottom-right'
         autoClose={false}

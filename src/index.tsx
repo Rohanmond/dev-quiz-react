@@ -6,6 +6,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { AuthProvider } from './contexts/auth-context';
 import { QuizDataProvider } from './contexts/data-context';
 import { ThemeProvider } from './contexts/theme-context';
+import { LoaderProvider } from './contexts/loader-context';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -14,11 +15,13 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <ThemeProvider>
-        <AuthProvider>
-          <QuizDataProvider>
-            <App />
-          </QuizDataProvider>
-        </AuthProvider>
+        <LoaderProvider>
+          <AuthProvider>
+            <QuizDataProvider>
+              <App />
+            </QuizDataProvider>
+          </AuthProvider>
+        </LoaderProvider>
       </ThemeProvider>
     </BrowserRouter>
   </React.StrictMode>
