@@ -1,39 +1,31 @@
-// import React from 'react';
-// import { Link } from 'react-router-dom';
-// import './Footer.css';
-// export const Footer = () => {
-//   return (
-//     <footer className='footer'>
-//       <div className='footer__redes'>
-//         <ul className='footer__redes-wrapper'>
-//           <li>
-//             <Link href='#' className='footer__link'>
-//               <i className='fab fa-facebook-f'></i>
-//               facebook
-//             </Link>
-//           </li>
-//           <li>
-//             <a href='#' className='footer__link'>
-//               <i className='fab fa-twitter'></i>
-//               twitter
-//             </a>
-//           </li>
-//           <li>
-//             <a href='#' className='footer__link'>
-//               <i className='fab fa-instagram'></i>
-//               instagram
-//             </a>
-//           </li>
-//           <li>
-//             <a href='#' className='footer__link'>
-//               <i className='fab fa-youtube'></i>
-//               youtube
-//             </a>
-//           </li>
-//         </ul>
-//       </div>
-//       <div className='separador'></div>
-//       <p className='footer__texto'>Copyright @ 2022</p>
-//     </footer>
-//   );
-// };
+import './Footer.css';
+export const Footer = () => {
+  return (
+    <footer className='main-footer'>
+      <div className='footer-links'>
+        <a
+          target={'_blank'}
+          rel='noreferrer'
+          href='https://twitter.com/RohanMo33437915'
+        >
+          <i className='fab fa-twitter'></i>
+        </a>
+        <a
+          rel='noreferrer'
+          target={'_blank'}
+          href='https://github.com/Rohanmond'
+        >
+          <i className='fab fa-github'></i>
+        </a>
+        <a
+          rel='noreferrer'
+          target={'_blank'}
+          href='https://www.linkedin.com/in/rohanmondal/'
+        >
+          <i className='fab fa-linkedin'></i>
+        </a>
+      </div>
+      <div className='footer-text'>© No Copyright, Feel free to replicate.</div>
+    </footer>
+  );
+};

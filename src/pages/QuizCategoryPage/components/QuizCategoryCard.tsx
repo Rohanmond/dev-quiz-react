@@ -9,10 +9,10 @@ export const QuizCategoryCard: React.FC<PropType> = ({ cardData }) => {
   const { quizName, quizId, image } = cardData;
 
   return (
-    <div className='home-quiz-card brd-rd-semi-sq'>
-      <div className='home-quiz-card-img-container brd-rd-semi-sq'>
+    <div className='home-quiz-card'>
+      <div className='home-quiz-card-img-container'>
         <img
-          className='img-responsive brd-rd-semi-sq'
+          className='img-responsive border-radius-inherit'
           src={image}
           alt='quiz card-'
         />
@@ -20,12 +20,7 @@ export const QuizCategoryCard: React.FC<PropType> = ({ cardData }) => {
       <div className='home-card-header'>
         <h3>{quizName.toUpperCase()} Quiz</h3>
       </div>
-      <div className='home-quiz-card-content'>
-        <p className='text-align-center'>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere,
-          doloremque!
-        </p>
-      </div>
+
       <div className='home-quiz-card-footer'>
         <Link
           to={`/${quizId}/rules`}

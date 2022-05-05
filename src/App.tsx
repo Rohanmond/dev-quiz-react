@@ -21,6 +21,7 @@ import { LeaderBoard } from './pages/LeaderBoard/LeaderBoard';
 import { useTheme } from './contexts/theme-context';
 import { useLoader } from './contexts/loader-context';
 import { Loader } from './components/Loader/Loader';
+import { Footer } from './components/Footer/Footer';
 
 function App() {
   const { state } = useQuiz();
@@ -88,7 +89,7 @@ function App() {
         </Route>
         <Route path='/leader-board' element={<LeaderBoard />} />
       </Routes>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }

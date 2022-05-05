@@ -41,8 +41,9 @@
   border-bottom: 0.25rem solid var(--text-color);
 }
 .home-cards {
+  margin-top: 2rem;
   display: flex;
-  gap: 1.5rem;
+  gap: 3rem;
   flex-wrap: wrap;
 
   justify-content: center;
@@ -50,19 +51,25 @@
 .home-quiz-card {
   display: flex;
   flex-direction: column;
-  border: 2px solid var(--text-color);
+  /* border: 3px solid var(--text-color); */
   align-items: center;
   max-width: 20rem;
   gap: 1rem;
   justify-content: space-evenly;
+  border-radius: 3rem;
+}
+.border-radius-inherit {
+  border-radius: inherit;
 }
 
 .home-quiz-card-img-container {
   width: 100%;
+  border-radius: inherit;
 }
 
 .home-quiz-card-img-container img {
   height: 14rem;
+  width: 20rem;
 }
 .home-quiz-card-header {
   padding: 0.5rem;
