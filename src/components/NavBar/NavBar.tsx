@@ -33,10 +33,17 @@ export const NavBar = () => {
       <div className='nav-right'>
         <ul className='nav-links'>
           <li className='nav-link-item'>
-            <i
-              onClick={changeTheme}
-              className='fas fa-sun nav-link-item-icon'
-            ></i>
+            {theme === 'dark' ? (
+              <i
+                onClick={changeTheme}
+                className='fas fa-sun nav-link-item-icon'
+              ></i>
+            ) : (
+              <i
+                onClick={changeTheme}
+                className='fas fa-moon nav-link-item-icon'
+              ></i>
+            )}
           </li>
           <li className='nav-link-item'>
             <i
