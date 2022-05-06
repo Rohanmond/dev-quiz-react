@@ -469,94 +469,113 @@ export const QuizModel: QuizModelType[] = [
     points: 15,
     questions: [
       {
-        question: 'The time co',
+        question: 'Which one of the below mentioned is linear data structure',
         point: 15,
         options: [
           {
-            value: 'TRUE',
-            isRight: true,
-          },
-          {
-            value: 'FALSE',
-            isRight: false,
-          },
-        ],
-      },
-      {
-        question: 'We can use hooks in class components - TRUE or FALSE',
-        point: 15,
-        options: [
-          {
-            value: 'TRUE',
+            value: 'Queue',
             isRight: false,
           },
           {
-            value: 'FALSE',
+            value: 'Stack',
+            isRight: false,
+          },
+          {
+            value: 'Array',
+            isRight: false,
+          },
+          {
+            value: 'All of the above',
             isRight: true,
           },
         ],
       },
       {
-        question: 'which is not true',
+        question: 'Which of the following has search effeciency of Ο(1) −',
         point: 15,
         options: [
           {
-            value: 'Prop drilling is better than context api";',
+            value: 'Tree',
+            isRight: false,
+          },
+          {
+            value: 'Heap',
+            isRight: false,
+          },
+          {
+            value: 'Hash Table',
             isRight: true,
           },
           {
-            value: 'Context api is used to maintain states globally";',
-            isRight: false,
-          },
-          {
-            value: 'For one or two level we can use prop drilling.',
-            isRight: false,
-          },
-          {
-            value: 'We can use two or more contexts in a react application',
+            value: 'Linked List',
             isRight: false,
           },
         ],
       },
       {
-        question: 'The flow of the react hooks in functional components - ',
+        question: 'Linked list search complexity is',
         point: 15,
         options: [
           {
-            value:
-              'mount - set new state - rerender - useEffect clean up - useEffect - unmount - useEffect clean up',
+            value: 'O(1)',
+            isRight: false,
+          },
+          {
+            value: 'O(n)',
             isRight: true,
           },
           {
-            value:
-              'mount - rerender - set new state - useEffect clean up - useEffect - unmount - useEffect clean up ',
+            value: 'O(logn)',
+            isRight: false,
+          },
+          {
+            value: 'O(loglogn)',
+            isRight: false,
+          },
+        ],
+      },
+      {
+        question: 'The complexity of merge sort algorithm is',
+        point: 15,
+        options: [
+          {
+            value: 'O(n)',
+            isRight: false,
+          },
+          {
+            value: 'O(log n)',
+            isRight: false,
+          },
+          {
+            value: 'O(n2)',
 
             isRight: false,
           },
           {
-            value:
-              'mount - set state - rerender  - useEffect - useEffect clean up - unmount - useEffect clean up',
+            value: 'O(n log n)',
 
-            isRight: false,
-          },
-          {
-            value:
-              'mount - set state - rerender - useEffect clean up - useEffect - useEffect clean up - unmount',
-
-            isRight: false,
+            isRight: true,
           },
         ],
       },
       {
-        question: 'useRef rerenders react component - TRUE or FALSE',
+        question: 'Value of the postfix expression 6 3 2 4 + – * is',
         point: 15,
         options: [
           {
-            value: 'TRUE',
+            value: '-12',
             isRight: false,
           },
           {
-            value: 'FALSE',
+            value: '-10',
+            isRight: false,
+          },
+          {
+            value: '18',
+            isRight: false,
+          },
+          {
+            value: '-18',
             isRight: true,
           },
         ],
