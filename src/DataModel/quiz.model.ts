@@ -398,11 +398,11 @@ export const QuizModel: QuizModelType[] = [
         point: 10,
         options: [
           {
-            value: 'Prop drilling is better than context api";',
+            value: 'Prop drilling is better than context api',
             isRight: true,
           },
           {
-            value: 'Context api is used to maintain states globally";',
+            value: 'Context api is used to maintain states globally',
             isRight: false,
           },
           {
