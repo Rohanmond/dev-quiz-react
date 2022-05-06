@@ -33,7 +33,7 @@
   font-weight: 600;
   border-radius: 0.5rem;
   background-color: var(--secondary-background);
-  padding: 1.25rem 0;
+  padding: 1.25rem 1rem;
 }
 .quiz-question-options > button:hover {
   background-color: var(--primary-color);

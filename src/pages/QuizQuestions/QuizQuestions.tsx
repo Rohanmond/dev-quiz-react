@@ -82,7 +82,7 @@ export const QuizQuestions = () => {
   return (
     <div className='quiz-question-container'>
       <div className='quiz-question-header'>
-        <h3>{quizData?.quizName}</h3>
+        <h3>{quizData?.quizName.toUpperCase()}</h3>
       </div>
       <div className='quiz-container-subheader'>
         <p>
