@@ -41,6 +41,7 @@ export const Login = () => {
                 onChange={(e) =>
                   setLoginForm({ ...loginForm, email: e.target.value })
                 }
+                required
               />
             </div>
           </div>
@@ -55,6 +56,7 @@ export const Login = () => {
                 onChange={(e) =>
                   setLoginForm({ ...loginForm, password: e.target.value })
                 }
+                required
               />
             </div>
           </div>
