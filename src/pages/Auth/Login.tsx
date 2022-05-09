@@ -16,7 +16,7 @@ export const Login = () => {
     if (token) {
       navigate(location?.state?.from || '/categories', { replace: true });
     }
-  });
+  }, [token]);
 
   const onSubmitHandler = async (e: React.SyntheticEvent) => {
     console.log('called', loginForm);
@@ -75,12 +75,17 @@ export const Login = () => {
             >
               Login with test credentials
             </button>
-            <Link
-              className='btn btn-link-secondary outlined-secondary text-align-center brd-rd-semi-sq'
-              to={'/signup'}
-            >
-              Create New Account
-            </Link>
+            <div className='auth-link-container'>
+              <span className='font-wt-semibold'>Don't have an account?</span>
+              <span
+                className='auth-link font-wt-semibold'
+                onClick={() =>
+                  navigate('/signup', { state: { from: location.state?.from } })
+                }
+              >
+                Signup
+              </span>
+            </div>
           </div>
         </form>
       </main>

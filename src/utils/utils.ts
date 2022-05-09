@@ -47,3 +47,21 @@ export const ToastType = {
   Info: 'info',
   Error: 'error',
 };
+
+export const validateMobileNo = (input: string) => {
+  return /^[0-9]+$/.test(input);
+};
+export const validatePinCode = (input: string) => {
+  return /^[0-9]+$/.test(input) && input.length === 6;
+};
+export const validateOnlyString = (input: string) => {
+  return /^[a-z A-Z]+$/.test(input) || input === '';
+};
+export const validateEmail = (input: string) => {
+  return /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+    input.toLowerCase()
+  );
+};
+export const validatePassword = (input: string) => {
+  return /^(?=.{8,20}$)\D*\d/.test(input);
+};

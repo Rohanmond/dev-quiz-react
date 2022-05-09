@@ -11,8 +11,8 @@ export const LeaderBoard = () => {
   const [userData, setUserData] = useState([]);
   const { setShowLoader } = useLoader();
   useEffect(() => {
+    setShowLoader(true);
     (async () => {
-      setShowLoader(true);
       try {
         const userData: any = [];
         const q = query(collection(db, 'users'));
@@ -47,7 +47,7 @@ export const LeaderBoard = () => {
     users.sort((a, b) => b.score - a.score);
     return users;
   }, [userData]);
-
+  console.log(' sorted users', users);
   return (
     <div>
       <NavBar />
