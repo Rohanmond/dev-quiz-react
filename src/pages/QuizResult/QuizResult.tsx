@@ -26,7 +26,6 @@ export const QuizResult = () => {
       ? acc + eachQuestionPoint
       : acc;
   }, 0);
-  console.log(results, points);
 
   useEffect(() => {
     sessionStorage.removeItem('answerData');

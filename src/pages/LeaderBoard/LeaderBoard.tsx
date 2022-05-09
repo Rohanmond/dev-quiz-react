@@ -20,7 +20,7 @@ export const LeaderBoard = () => {
           data.docs.forEach((el) => {
             userData.push(el.data());
           });
-          console.log(userData);
+
           setUserData(userData);
         });
       } catch (err) {
@@ -47,7 +47,7 @@ export const LeaderBoard = () => {
     users.sort((a, b) => b.score - a.score);
     return users;
   }, [userData]);
-  console.log(' sorted users', users);
+
   return (
     <div>
       <NavBar />

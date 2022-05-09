@@ -38,12 +38,10 @@ export const QuizQuestions = () => {
   }, [timer]);
 
   useEffect(() => {
-    console.log('hello', state, questionIndex);
     if (state.answers.length === 0 && Number(questionIndex) !== 1) {
       const recoveredData = JSON.parse(
         sessionStorage.getItem('answerData') || '[]'
       );
-      console.log(recoveredData);
       if (recoveredData.length === 0)
         navigate(`/${quizId}/rules`, { replace: true });
       dispatch({

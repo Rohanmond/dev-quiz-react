@@ -25,10 +25,8 @@ import { Footer } from './components/Footer/Footer';
 
 function App() {
   const { state } = useQuiz();
-  const { user } = useAuth();
   const { theme } = useTheme();
   const { showLoader } = useLoader();
-  console.log(user);
 
   return (
     <div className='App' data-theme={theme}>

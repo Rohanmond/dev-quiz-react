@@ -19,7 +19,6 @@ export const Login = () => {
   }, [token]);
 
   const onSubmitHandler = async (e: React.SyntheticEvent) => {
-    console.log('called', loginForm);
     e.preventDefault();
     loginHandler(loginForm.email, loginForm.password);
   };
