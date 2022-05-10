@@ -16,3 +16,4 @@ export {
 export { ActionType } from './data-reducer.types';
 
 export { CategoryType } from './category.types';
+export { ThemeContextType } from './theme-context.types';

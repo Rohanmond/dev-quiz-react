@@ -1,6 +1,7 @@
 import { collection, onSnapshot, query } from 'firebase/firestore';
 import { useEffect, useMemo, useState } from 'react';
 import { NavBar } from '../../components';
+import { useLoader } from '../../contexts/loader-context';
 import { QuizModel } from '../../DataModel/quiz.model';
 import { db } from '../../firebase';
 import { UserType } from '../../types';
@@ -8,17 +9,25 @@ import './LeaderBoard.css';
 
 export const LeaderBoard = () => {
   const [userData, setUserData] = useState([]);
+  const { setShowLoader } = useLoader();
   useEffect(() => {
+    setShowLoader(true);
     (async () => {
-      const userData: any = [];
-      const q = query(collection(db, 'users'));
-      onSnapshot(q, (data) => {
-        data.docs.forEach((el) => {
-          userData.push(el.data());
+      try {
+        const userData: any = [];
+        const q = query(collection(db, 'users'));
+        onSnapshot(q, (data) => {
+          data.docs.forEach((el) => {
+            userData.push(el.data());
+          });
+
+          setUserData(userData);
         });
-        console.log(userData);
-        setUserData(userData);
-      });
+      } catch (err) {
+        console.log(err);
+      } finally {
+        setShowLoader(false);
+      }
     })();
   }, []);
 
@@ -27,11 +36,12 @@ export const LeaderBoard = () => {
     for (const el of userData) {
       let element: UserType = el;
       for (const scoreEle of element.score) {
-        users.push({
-          name: element.name,
-          quizId: scoreEle.quizId,
-          score: scoreEle.score,
-        });
+        if (scoreEle.score > 0)
+          users.push({
+            name: element.name,
+            quizId: scoreEle.quizId,
+            score: scoreEle.score,
+          });
       }
     }
     users.sort((a, b) => b.score - a.score);

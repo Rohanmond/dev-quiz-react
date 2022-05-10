@@ -5,6 +5,8 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import { AuthProvider } from './contexts/auth-context';
 import { QuizDataProvider } from './contexts/data-context';
+import { ThemeProvider } from './contexts/theme-context';
+import { LoaderProvider } from './contexts/loader-context';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -12,11 +14,15 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <AuthProvider>
-        <QuizDataProvider>
-          <App />
-        </QuizDataProvider>
-      </AuthProvider>
+      <ThemeProvider>
+        <LoaderProvider>
+          <AuthProvider>
+            <QuizDataProvider>
+              <App />
+            </QuizDataProvider>
+          </AuthProvider>
+        </LoaderProvider>
+      </ThemeProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

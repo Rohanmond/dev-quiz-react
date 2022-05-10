@@ -8,13 +8,13 @@
 .quiz-result-header {
   text-align: center;
   padding: 1rem;
-  color: var(--yellow-200);
+  color: var(--yellow-600);
 }
 .quiz-score {
   text-align: center;
   padding: 2rem;
   font-weight: 600;
-  color: var(--grey-400);
+  color: var(--text-secondary-color);
 }
 .quiz-results-container {
   display: flex;
@@ -29,12 +29,13 @@
   align-items: center;
 }
 .background-result {
-  background-color: #0d1d31;
+  background-color: var(--secondary-background);
 }
 .quiz-result {
   width: 100%;
   text-align: center;
   font-size: 0.9rem;
+  font-weight: 520;
 }
 .result-footer {
   padding: 2rem;

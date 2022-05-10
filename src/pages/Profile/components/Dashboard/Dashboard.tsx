@@ -1,7 +1,9 @@
 import { collection, onSnapshot, query, where } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Loader } from '../../../../components/Loader/Loader';
 import { useAuth } from '../../../../contexts/auth-context';
+import { useLoader } from '../../../../contexts/loader-context';
 import { QuizModel } from '../../../../DataModel/quiz.model';
 import { db } from '../../../../firebase';
 import { UserType } from '../../../../types';
@@ -16,13 +18,22 @@ export const Dashboard = () => {
     score: [],
     uid: '',
   });
+  const { setShowLoader } = useLoader();
+
   useEffect(() => {
     if (token && userId) {
+      setShowLoader(true);
       (async () => {
-        const q = query(collection(db, 'users'), where('uid', '==', userId));
-        onSnapshot(q, (data) => {
-          setUser(data.docs[0].data() as UserType);
-        });
+        try {
+          const q = query(collection(db, 'users'), where('uid', '==', userId));
+          onSnapshot(q, (data) => {
+            setUser(data.docs[0].data() as UserType);
+          });
+        } catch (err) {
+          console.log(err);
+        } finally {
+          setShowLoader(false);
+        }
       })();
     }
   }, []);

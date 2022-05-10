@@ -7,7 +7,7 @@ export const QuizRules = () => {
   const { quizId } = useParams();
 
   const QuizData = QuizModel.find((el) => el.quizId);
-  console.log(QuizData);
+
   return (
     <div className='home-container'>
       <NavBar />

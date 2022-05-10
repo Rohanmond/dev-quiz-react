@@ -14,6 +14,7 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 import { auth, db } from '../firebase';
 import { AuthContextType, LayoutPropType, UserType } from '../types';
 import { toastHandler, ToastType } from '../utils/utils';
+import { useLoader } from './loader-context';
 
 const AuthContext = createContext<AuthContextType>({} as AuthContextType);
 
@@ -29,6 +30,7 @@ export const AuthProvider = ({ children }: LayoutPropType) => {
     score: [],
     uid: '',
   });
+  const { setShowLoader } = useLoader();
 
   useEffect(() => {
     if (token && userId) {
@@ -42,6 +44,7 @@ export const AuthProvider = ({ children }: LayoutPropType) => {
   }, [token]);
 
   const loginHandler = async (email: string, password: string) => {
+    setShowLoader(true);
     try {
       const res = await signInWithEmailAndPassword(auth, email, password);
       const user: any = res.user;
@@ -56,6 +59,8 @@ export const AuthProvider = ({ children }: LayoutPropType) => {
     } catch (err: any) {
       console.error(err);
       alert(err.message);
+    } finally {
+      setShowLoader(false);
     }
   };
 
@@ -64,6 +69,7 @@ export const AuthProvider = ({ children }: LayoutPropType) => {
     email: string,
     password: string
   ) => {
+    setShowLoader(true);
     try {
       const res = await createUserWithEmailAndPassword(auth, email, password);
       const user: any = res.user;
@@ -85,6 +91,8 @@ export const AuthProvider = ({ children }: LayoutPropType) => {
     } catch (err: any) {
       console.error(err);
       toastHandler(ToastType.Error, err.message);
+    } finally {
+      setShowLoader(false);
     }
   };
 

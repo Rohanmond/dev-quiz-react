@@ -13,7 +13,6 @@ export const QuizCategoryPage = () => {
   };
 
   const quizData = QuizModel.filter((el) => el.quizCategory === activeButton);
-  console.log(quizData);
 
   useEffect(() => {
     sessionStorage.removeItem('answerData');

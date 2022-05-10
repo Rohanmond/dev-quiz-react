@@ -38,12 +38,10 @@ export const QuizQuestions = () => {
   }, [timer]);
 
   useEffect(() => {
-    console.log('hello', state, questionIndex);
     if (state.answers.length === 0 && Number(questionIndex) !== 1) {
       const recoveredData = JSON.parse(
         sessionStorage.getItem('answerData') || '[]'
       );
-      console.log(recoveredData);
       if (recoveredData.length === 0)
         navigate(`/${quizId}/rules`, { replace: true });
       dispatch({
@@ -82,7 +80,7 @@ export const QuizQuestions = () => {
   return (
     <div className='quiz-question-container'>
       <div className='quiz-question-header'>
-        <h3>{quizData?.quizName}</h3>
+        <h3>{quizData?.quizName.toUpperCase()}</h3>
       </div>
       <div className='quiz-container-subheader'>
         <p>
@@ -118,6 +116,7 @@ export const QuizQuestions = () => {
             sessionStorage.removeItem('quiz-timer');
           }}
           to={'/categories'}
+          className='quit-game'
         >
           Quit Game
         </Link>

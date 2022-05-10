@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
-  /* background-color: var(--white-c); */
 }
 .login-main {
   flex-grow: 1;
@@ -26,8 +25,15 @@
 }
 .login-card-item input {
   background-color: var(--secondary-background);
-  border: 2px solid var(--white-color);
-  color: var(--white-color);
+  border: 2px solid var(--text-color);
+  color: var(--text-color);
+  border-radius: 0.25rem;
+}
+.login-card-item input:hover {
+  border: 2px solid var(--text-color);
+}
+.login-card-item input:active {
+  border: 2px solid var(--text-color);
 }
 .login-card-item:last-of-type {
   padding-top: 0.5rem;
@@ -62,4 +68,14 @@
 }
 .logout-text h1 {
   color: var(--primary-color);
+}
+
+.auth-link-container {
+  display: flex;
+  gap: 0.2rem;
+}
+
+.auth-link {
+  cursor: pointer;
+  color: var(--yellow-200);
 }

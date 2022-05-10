@@ -18,14 +18,19 @@ import { Profile } from './pages/Profile/Profile';
 import { Details } from './pages/Profile/components/Details/Details';
 import { Dashboard } from './pages/Profile/components/Dashboard/Dashboard';
 import { LeaderBoard } from './pages/LeaderBoard/LeaderBoard';
+import { useTheme } from './contexts/theme-context';
+import { useLoader } from './contexts/loader-context';
+import { Loader } from './components/Loader/Loader';
+import { Footer } from './components/Footer/Footer';
 
 function App() {
   const { state } = useQuiz();
-  const { user } = useAuth();
-  console.log(user);
+  const { theme } = useTheme();
+  const { showLoader } = useLoader();
 
   return (
-    <div className='App'>
+    <div className='App' data-theme={theme}>
+      {showLoader ? <Loader /> : null}
       <ToastContainer
         position='bottom-right'
         autoClose={false}
@@ -82,7 +87,7 @@ function App() {
         </Route>
         <Route path='/leader-board' element={<LeaderBoard />} />
       </Routes>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }
