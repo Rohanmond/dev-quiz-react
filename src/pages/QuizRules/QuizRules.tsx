@@ -25,7 +25,7 @@ export const QuizRules = () => {
           <div className='rules-details'>
             <p>There are a total of {QuizData?.points} questions</p>
             <p>Each questions is of 10 points</p>
-            <p>You get 60 seconds to answer each question</p>
+            <p>You get 45 seconds to answer each question</p>
           </div>
           <Link
             to={`/${quizId}/1`}

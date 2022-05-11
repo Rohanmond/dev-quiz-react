@@ -17,6 +17,7 @@ export const QuizCategoryPage = () => {
   useEffect(() => {
     sessionStorage.removeItem('answerData');
     dispatch({ type: 'RESET' });
+    sessionStorage.removeItem('quiz-timer');
   }, []);
 
   return (
