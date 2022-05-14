@@ -43,3 +43,11 @@ $ npm start
 - Vanilla CSS integrated with Glex UI Component Library
 - React Context API + useReducer
 - React Router v6
+
+## **Demo **
+
+
+
+https://user-images.githubusercontent.com/52956782/168444812-ee5d4aa2-e45a-471f-9f04-bfc4130b37c9.mov
+
+
