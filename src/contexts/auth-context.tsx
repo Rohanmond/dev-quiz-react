@@ -58,7 +58,6 @@ export const AuthProvider = ({ children }: LayoutPropType) => {
       );
     } catch (err: any) {
       console.error(err);
-      alert(err.message);
     } finally {
       setShowLoader(false);
     }
